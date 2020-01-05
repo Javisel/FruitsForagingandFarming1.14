@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "II",
+    "II"
+
+  ],
+  "key": {
+    "I": {
+      "item": "fruits_foraging_and_farming:coconut_chunk"
+    }
+
+  },
+  "result": {
+    "item": "fruits_foraging_and_farming:coconut",
+    "count": 1
+  }
+}

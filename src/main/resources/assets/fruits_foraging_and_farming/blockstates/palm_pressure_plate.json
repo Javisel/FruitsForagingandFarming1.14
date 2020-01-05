@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "fruits_foraging_and_farming:block/palm_pressure_plate" },
+    "powered=true": { "model": "fruits_foraging_and_farming:block/palm_pressure_plate_down" }
+  }
+}
