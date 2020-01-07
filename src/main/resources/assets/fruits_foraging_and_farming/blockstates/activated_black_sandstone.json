@@ -1,8 +1,8 @@
 {
   "variants": {
-    "normal": [
+    "": [
       {
-        "model": "fruits_foraging_and_farming:activated_black_sandstone"
+        "model": "fruits_foraging_and_farming:block/activated_black_sandstone"
       }
     ]
   }

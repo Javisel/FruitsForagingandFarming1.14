@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "fruits_foraging_and_farming:palm_slab"
+    "fruits_foraging_and_farming:palm_slab",
+    "fruits_foraging_and_farming:black_sandstone_slab",
+    "fruits_foraging_and_farming:smooth_black_sandstone_slab",
+    "fruits_foraging_and_farming:cut_black_sandstone_slab"
 
   ]
 }

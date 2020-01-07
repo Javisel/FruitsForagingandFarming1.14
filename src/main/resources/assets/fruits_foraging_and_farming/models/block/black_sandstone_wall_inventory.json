@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_inventory",
+  "textures": {
+    "wall": "fruits_foraging_and_farming:block/black_sandstone_side"
+  }
+}

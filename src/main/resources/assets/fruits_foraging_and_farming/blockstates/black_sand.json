@@ -1,9 +1,10 @@
 {
   "variants": {
-    "normal": [
-      {
-        "model": "fruits_foraging_and_farming:black_sand"
-      }
+    "": [
+      { "model": "fruits_foraging_and_farming:block/black_sand" },
+      { "model": "fruits_foraging_and_farming:block/black_sand", "y": 90 },
+      { "model": "fruits_foraging_and_farming:block/black_sand", "y": 180 },
+      { "model": "fruits_foraging_and_farming:block/black_sand", "y": 270 }
     ]
   }
 }

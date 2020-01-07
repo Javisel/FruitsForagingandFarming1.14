@@ -4,10 +4,7 @@ import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
 import com.teamcitrus.fruitsforagingandfarming.common.block.*;
 import com.teamcitrus.fruitsforagingandfarming.common.item.ItemBlockBase;
 import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.PalmTree;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
@@ -16,6 +13,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ObjectHolder;
+import org.lwjgl.system.CallbackI;
 
 import java.util.function.Supplier;
 
@@ -24,6 +22,8 @@ import java.util.function.Supplier;
 public class BlockRegistration {
 
     private static final Block.Properties WOOD_BLOCK_PROPERTY = Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0F, 3.0F);
+    private static final  Block.Properties SANDSTONE_PROPERTIES =Block.Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(0.8F);
+
     public static Block PALM_LOG = null;
     public static Block STRIPPED_PALM_LOG = null;
     public static Block PALM_WOOD = null;
@@ -42,6 +42,20 @@ public class BlockRegistration {
     public static Block PALM_DOOR = null;
     public static Block PALM_TRAPDOOR = null;
 
+    //BLACK SAND
+    public static Block BLACK_SAND = null;
+    public static Block BLACK_SANDSTONE = null;
+    public static Block SMOOTH_BLACK_SANDSTONE = null;
+    public static Block CHISELED_BLACK_SANDSTONE = null;
+    public static Block CUT_BLACK_SANDSTONE = null;
+    public static Block BLACK_SANDSTONE_SLAB = null;
+    public static Block CUT_BLACK_SANDSTONE_SLAB=  null;
+    public static Block SMOOTH_BLACK_SANDSTONE_SLAB=null;
+    public static Block BLACK_SANDSTONE_STAIRS =null;
+    public static Block SMOOTH_BLACK_SANDSTONE_STAIRS = null;
+    public static Block ACTIVATED_BLACK_SANDSTONE = null;
+    public static Block BLACK_SANDSTONE_WALL = null;
+
     //COCONUT
     public static Block COCONUT = null;
     public static Block SPLIT_COCONUT = null;
@@ -58,23 +72,31 @@ public class BlockRegistration {
                         PALM_PLANKS = new BlockBase("palm_planks", WOOD_BLOCK_PROPERTY),
                         PALM_LEAVES = new LeavesBlockBase("palm_leaves", Block.Properties.create(Material.LEAVES, MaterialColor.GREEN)),
                         PALM_SAPLING = new SaplingBase("palm_sapling", new PalmTree(), Block.Properties.create(Material.PLANTS, MaterialColor.GREEN).sound(SoundType.PLANT)),
-                        PALM_STAIRS = new StairsBase("palm_stairs", new Supplier<BlockState>() {
-                            @Override
-                            public BlockState get() {
-                                return BlockRegistration.PALM_PLANKS.getDefaultState();
-                            }
-                        }, WOOD_BLOCK_PROPERTY),
+                        PALM_STAIRS = new StairsBase("palm_stairs", BlockRegistration.PALM_PLANKS.getDefaultState(), WOOD_BLOCK_PROPERTY),
                         PALM_SLAB = new SlabBase("palm_slab", WOOD_BLOCK_PROPERTY),
                         PALM_BUTTON = new ButtonBase("palm_button", WOOD_BLOCK_PROPERTY),
                         PALM_PRESSURE_PLATE = new PressurePlateBase("palm_pressure_plate", PressurePlateBlock.Sensitivity.EVERYTHING, WOOD_BLOCK_PROPERTY),
                         PALM_FENCE = new FenceBlockBase("palm_fence", WOOD_BLOCK_PROPERTY),
                         PALM_FENCE_GATE = new FenceGateBlockBase("palm_fence_gate", WOOD_BLOCK_PROPERTY),
-                        PALM_SIGN = new StandingSignBase("palm_sign", WOOD_BLOCK_PROPERTY),
-                        PALM_WALL_SIGN = new WallSignBase("palm_wall_sign", WOOD_BLOCK_PROPERTY),
+                      //  PALM_SIGN = new StandingSignBase("palm_sign", WOOD_BLOCK_PROPERTY),
+                        //PALM_WALL_SIGN = new WallSignBase("palm_wall_sign", WOOD_BLOCK_PROPERTY),
                         PALM_DOOR = new DoorBase("palm_door", WOOD_BLOCK_PROPERTY),
                         PALM_TRAPDOOR = new TrapdoorBase("palm_trapdoor", WOOD_BLOCK_PROPERTY),
                         COCONUT = new BlockCoconut(),
-                        SPLIT_COCONUT = new BlockSplitCoconut()
+                        SPLIT_COCONUT = new BlockSplitCoconut(),
+                        BLACK_SAND = new FallingBlock(Block.Properties.create(Material.SAND,MaterialColor.BLACK).hardnessAndResistance(0.5F)).setRegistryName("black_sand"),
+                        BLACK_SANDSTONE = new BlockBase("black_sandstone",SANDSTONE_PROPERTIES),
+                        SMOOTH_BLACK_SANDSTONE = new BlockBase("smooth_black_sandstone",SANDSTONE_PROPERTIES),
+                        CHISELED_BLACK_SANDSTONE = new ChiseledBlackSandstone(SANDSTONE_PROPERTIES),
+                        CUT_BLACK_SANDSTONE = new BlockBase("cut_black_sandstone",SANDSTONE_PROPERTIES),
+                        BLACK_SANDSTONE_SLAB = new SlabBase("black_sandstone_slab",SANDSTONE_PROPERTIES),
+                        CUT_BLACK_SANDSTONE_SLAB = new SlabBase("cut_black_sandstone_slab",SANDSTONE_PROPERTIES),
+                        SMOOTH_BLACK_SANDSTONE_SLAB = new SlabBase("smooth_black_sandstone_slab",SANDSTONE_PROPERTIES),
+                        BLACK_SANDSTONE_STAIRS = new StairsBase("black_sandstone_stairs",BlockRegistration.BLACK_SANDSTONE.getDefaultState(),SANDSTONE_PROPERTIES),
+                        SMOOTH_BLACK_SANDSTONE_STAIRS = new StairsBase("smooth_black_sandstone_stairs",BlockRegistration.SMOOTH_BLACK_SANDSTONE.getDefaultState(),SANDSTONE_PROPERTIES),
+                        ACTIVATED_BLACK_SANDSTONE = new BlockBase("activated_black_sandstone",SANDSTONE_PROPERTIES),
+                        BLACK_SANDSTONE_WALL = new WallBase("black_sandstone_wall",SANDSTONE_PROPERTIES)
+
                 );
     }
 
@@ -97,11 +119,25 @@ public class BlockRegistration {
                         new ItemBlockBase(PALM_PRESSURE_PLATE, new Item.Properties()),
                         new ItemBlockBase(PALM_FENCE, new Item.Properties()),
                         new ItemBlockBase(PALM_FENCE_GATE, new Item.Properties()),
-                        new SignItem(new Item.Properties().group(FruitsForagingAndFarming.itemGroup), PALM_SIGN, PALM_WALL_SIGN).setRegistryName(FruitsForagingAndFarming.MODID, "palm_sign"),
+                        //new SignItem(new Item.Properties().group(FruitsForagingAndFarming.itemGroup), PALM_SIGN, PALM_WALL_SIGN).setRegistryName(FruitsForagingAndFarming.MODID, "palm_sign"),
                         new ItemBlockBase(PALM_DOOR, new Item.Properties()),
                         new ItemBlockBase(PALM_TRAPDOOR, new Item.Properties()),
                         new ItemBlockBase(COCONUT, new Item.Properties()),
-                        new ItemBlockBase(SPLIT_COCONUT, new Item.Properties())
+                        new ItemBlockBase(SPLIT_COCONUT, new Item.Properties()),
+                        new ItemBlockBase(BLACK_SAND,new Item.Properties()),
+                        new ItemBlockBase(BLACK_SANDSTONE,new Item.Properties()),
+                        new ItemBlockBase(BLACK_SANDSTONE_SLAB,new Item.Properties()),
+                        new ItemBlockBase(BLACK_SANDSTONE_STAIRS,new Item.Properties()),
+                         new ItemBlockBase(SMOOTH_BLACK_SANDSTONE,new Item.Properties()),
+                          new ItemBlockBase(CHISELED_BLACK_SANDSTONE,new Item.Properties()),
+                         new ItemBlockBase(CUT_BLACK_SANDSTONE,new Item.Properties()),
+                        new ItemBlockBase(CUT_BLACK_SANDSTONE_SLAB,new Item.Properties()),
+
+        new ItemBlockBase(SMOOTH_BLACK_SANDSTONE_SLAB,new Item.Properties()),
+                        new ItemBlockBase(SMOOTH_BLACK_SANDSTONE_STAIRS,new Item.Properties()),
+                        new ItemBlockBase(ACTIVATED_BLACK_SANDSTONE,new Item.Properties()),
+                        new ItemBlockBase(BLACK_SANDSTONE_WALL,new Item.Properties())
+
 
                 );
 

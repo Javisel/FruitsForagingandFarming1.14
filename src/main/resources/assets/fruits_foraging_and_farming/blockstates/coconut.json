@@ -16,13 +16,6 @@
  "state=4": {
       "model": "fruits_foraging_and_farming:block/coconut_stage_4"
     }
-,
- "state=5": {
-      "model": "fruits_foraging_and_farming:block/coconut_stage_5"
-    },
 
-    "state=6": {
-      "model": "fruits_foraging_and_farming:block/coconut_stage_6"
-    }
   }
 }

@@ -1,7 +1,7 @@
 {
   "enchantment.devour": "Devour",
   "enchantment.lifesteal": "Lifesteal",
-  "effect.infestation": "Infestation",
+  "effect.fruits_foraging_and_farming.infestation": "Infestation",
   "enchantment.void": "Void",
   "entity.golden_chicken": "Golden Chicken",
   "entity.coconut_crab": "Coconut Crab",
@@ -69,11 +69,18 @@
   "block.fruits_foraging_and_farming.black_sand": "Black Sand",
   "block.fruits_foraging_and_farming.activated_black_sandstone": "Activated Black Sandstone",
   "block.fruits_foraging_and_farming.black_sandstone": "Black Sandstone",
-  "block.fruits_foraging_and_farming.black_sandstone_chiseled": "Chiseled Black Sandstone",
-  "block.fruits_foraging_and_farming.black_sandstone_smooth": "Smooth Black Sandstone",
-  "block.fruits_foraging_and_farming.black_sandstone_half_slab": "Black Sandstone Slab",
+  "block.fruits_foraging_and_farming.chiseled_black_sandstone": "Chiseled Black Sandstone",
+  "block.fruits_foraging_and_farming.cut_black_sandstone": "Cut Black Sandstone",
+  "block.fruits_foraging_and_farming.cut_black_sandstone_slab": "Cut Black Sandstone Slab",
+
+  "block.fruits_foraging_and_farming.smooth_black_sandstone": "Smooth Black Sandstone",
+  "block.fruits_foraging_and_farming.smooth_black_sandstone_stairs": "Smooth Black Sandstone Stairs",
+  "block.fruits_foraging_and_farming.smooth_black_sandstone_slab": "Smooth Black Sandstone Slab",
+
+  "block.fruits_foraging_and_farming.black_sandstone_slab": "Black Sandstone Slab",
   "block.fruits_foraging_and_farming.black_sandstone_stairs": "Black Sandstone Stairs",
+  "block.fruits_foraging_and_farming.black_sandstone_wall": "Black Sandstone Wall",
   "tile_activated_black_sandstone": "Activated Black Sandstone",
   "biome.black_sand_beach": "Black Sand Beach",
-  "death.attack.fruits_foraging_and_farming.silverfishalien": "%1$s was Aliened by a Silverfish"
+  "death.attack.fruits_foraging_and_farming.silverfishalien.player": "%1$s was Aliened by a Silverfish"
 }

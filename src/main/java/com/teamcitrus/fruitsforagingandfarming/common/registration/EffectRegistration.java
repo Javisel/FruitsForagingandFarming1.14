@@ -12,15 +12,15 @@ import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.Nonnull;
 
-@Mod.EventBusSubscriber(modid = FruitsForagingAndFarming.MODID)
 @ObjectHolder(FruitsForagingAndFarming.MODID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EffectRegistration {
 
 
     public static  Effect INFESTATION = null;
 
     @SubscribeEvent
-    public static final void register(@Nonnull final RegistryEvent.Register<Effect> event) {
+    public static  void register(final RegistryEvent.Register<Effect> event) {
 
         event.getRegistry().registerAll(
                INFESTATION = new Infestation()

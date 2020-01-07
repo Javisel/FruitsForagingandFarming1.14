@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "fruits_foraging_and_farming:block/black_sandstone_top",
+    "top": "fruits_foraging_and_farming:block/black_sandstone_top",
+    "side": "fruits_foraging_and_farming:block/black_sandstone_top"
+  }
+}

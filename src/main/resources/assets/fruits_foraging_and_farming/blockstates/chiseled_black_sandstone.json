@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "fruits_foraging_and_farming:block/chiseled_black_sandstone"
+      }
+    ]
+  }
+}

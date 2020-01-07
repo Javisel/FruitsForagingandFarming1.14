@@ -1,11 +1,17 @@
 package com.teamcitrus.fruitsforagingandfarming.common.effect;
 
 import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
+import com.teamcitrus.fruitsforagingandfarming.common.registration.ItemRegistration;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.SilverfishEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.potion.EffectType;
 import net.minecraft.world.Difficulty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Infestation extends EffectBase {
 
@@ -48,4 +54,12 @@ public class Infestation extends EffectBase {
 
 
 
+    @Override
+    public List<ItemStack> getCurativeItems() {
+
+        ArrayList<ItemStack> cures = new ArrayList<>();
+        cures.add(new ItemStack(Items.MILK_BUCKET));
+
+        return  cures;
+    }
 }

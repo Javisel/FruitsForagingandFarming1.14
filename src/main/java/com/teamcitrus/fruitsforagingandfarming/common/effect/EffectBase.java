@@ -7,5 +7,6 @@ public class EffectBase extends Effect {
     protected EffectBase(String name,EffectType typeIn, int liquidColorIn) {
         super(typeIn, liquidColorIn);
         setRegistryName(name);
+
     }
 }

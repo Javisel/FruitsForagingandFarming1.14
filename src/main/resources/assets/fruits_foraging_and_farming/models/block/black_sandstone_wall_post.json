@@ -1,0 +1,6 @@
+{
+  "parent": "block/template_wall_post",
+  "textures": {
+    "wall": "fruits_foraging_and_farming:block/black_sandstone_side"
+  }
+}

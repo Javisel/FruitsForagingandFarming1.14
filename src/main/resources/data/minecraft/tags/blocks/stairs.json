@@ -1,7 +1,9 @@
 {
   "replace": false,
   "values": [
-    "fruits_foraging_and_farming:palm_stairs"
-
+    "fruits_foraging_and_farming:palm_stairs",
+    "fruits_foraging_and_farming:black_sandstone_stairs",
+    "fruits_foraging_and_farming:smooth_black_sandstone_stairs",
+    "fruits_foraging_and_farming:cut_black_sandstone_stairs"
   ]
 }
