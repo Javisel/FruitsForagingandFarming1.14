@@ -1,5 +1,6 @@
 package com.teamcitrus.fruitsforagingandfarming.common.config;
 
+import net.minecraft.item.Food;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
@@ -8,7 +9,10 @@ import java.util.List;
 public class Config {
 
     public static FoodData AVOCADO_DATA = new FoodData("avocado",3,.6);
+    public static FoodData COCONUT_CHUNK_DATA = new FoodData("coconut_chunk",3,0.3);
+    public static FoodData CORN = new FoodData("corn",3,.25f);
 
+    public static FoodData HONEYMELON_SLICE = new FoodData("honeymleon_slice",4,.25f);
 
 
     private  static List<FoodData> foodDataList = new ArrayList<>();
@@ -19,6 +23,8 @@ public class Config {
     static {
 
         foodDataList.add(AVOCADO_DATA);
+        foodDataList.add(COCONUT_CHUNK_DATA);
+        foodDataList.add(CORN);
 
 
     }
@@ -26,6 +32,7 @@ public class Config {
 
     public static void init(ForgeConfigSpec.Builder server) {
 
+        server.push("Food Configurations");
         for (FoodData data : foodDataList) {
 
             server.push(data.name + " data");
@@ -35,7 +42,7 @@ public class Config {
 
 
         }
-
+        server.pop();
 
 
     }
@@ -69,6 +76,14 @@ public class Config {
 
             return shanksRestored.get();
         }
+
+        public Food getDefaultFood() {
+
+
+            return new Food.Builder().hunger(getShanks()).saturation(getSaturation()).build();
+        }
+
+
 
     }
 

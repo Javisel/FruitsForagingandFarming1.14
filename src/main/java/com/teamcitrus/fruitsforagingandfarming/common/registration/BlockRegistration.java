@@ -28,7 +28,6 @@ public class BlockRegistration {
     public static Block STRIPPED_PALM_LOG = null;
     public static Block PALM_WOOD = null;
     public static Block STRIPPED_PALM_WOOD = null;
-    //TODO - Stripped Palm Log, Stripped Palm Wood
     public static Block PALM_PLANKS = null;
     public static Block PALM_LEAVES = null;
     public static Block PALM_SAPLING = null;

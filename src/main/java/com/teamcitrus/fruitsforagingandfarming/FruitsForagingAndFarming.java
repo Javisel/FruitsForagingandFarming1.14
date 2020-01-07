@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,6 +40,7 @@ public class FruitsForagingAndFarming {
     public static final ItemGroup itemGroup = new FruitsForagingAndFarmingItemGroup();
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
+    public static final DamageSource silverfishAlien = new SilverfishAlien();
 
     public FruitsForagingAndFarming() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ConfigSetup.SERVER, "fruits_foraging_and_farming_server.toml");
@@ -57,6 +59,7 @@ public class FruitsForagingAndFarming {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new EventHandler());
 
     }
 

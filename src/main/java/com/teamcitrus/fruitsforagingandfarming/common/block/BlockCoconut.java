@@ -1,10 +1,13 @@
 package com.teamcitrus.fruitsforagingandfarming.common.block;
 
 import com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration;
+import com.teamcitrus.fruitsforagingandfarming.common.registration.ItemRegistration;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.FallingBlockEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particles.BlockParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.IntegerProperty;
@@ -251,9 +254,11 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
             if (!worldIn.isRemote && worldIn.getBlockState(pos.down()).getBlock().getMaterial(worldIn.getBlockState(pos.down())) == Material.ROCK) {
 
 
-                worldIn.removeBlock(pos, false);
+                worldIn.destroyBlock(pos, false);
 
-                //TODO - Coconuts shatter on fall
+                ItemStack stack = new ItemStack(ItemRegistration.COCONUT_CHUNK,4);
+                ItemEntity itemEntity = new ItemEntity(worldIn,pos.getX(),pos.getY(),pos.getZ(),stack);
+                worldIn.addEntity(itemEntity);
 
             }
         }
