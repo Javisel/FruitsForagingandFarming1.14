@@ -2,8 +2,10 @@ package com.teamcitrus.fruitsforagingandfarming.common.registration;
 
 
 import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
+import com.teamcitrus.fruitsforagingandfarming.common.config.Config;
+import com.teamcitrus.fruitsforagingandfarming.common.item.ItemBase;
 import com.teamcitrus.fruitsforagingandfarming.common.item.PalmBoatItem;
-import net.minecraft.block.Block;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,20 +17,21 @@ import net.minecraftforge.registries.ObjectHolder;
 
 public class ItemRegistration {
 
+    public static Item AVOCADO = null;
     public static Item PALM_BOAT = null;
 
 
     @SubscribeEvent
     public static void registerItems(final RegistryEvent.Register<Item> event) {
-        System.out.println("ITEM REGISTRY!");
         event.getRegistry().registerAll
                 (
-                        PALM_BOAT = new PalmBoatItem("palm_boat", new Item.Properties().maxStackSize(1).group(FruitsForagingAndFarming.itemGroup))
+
+
+                        PALM_BOAT = new PalmBoatItem("palm_boat", new Item.Properties().maxStackSize(1).group(FruitsForagingAndFarming.itemGroup)),
+                        AVOCADO = new ItemBase("avocado",new Item.Properties().food(new Food.Builder().hunger(Config.AVOCADO_DATA.getShanks()).saturation(Config.AVOCADO_DATA.getSaturation()).build()))
+
                 );
     }
-
-
-
 
 
 }

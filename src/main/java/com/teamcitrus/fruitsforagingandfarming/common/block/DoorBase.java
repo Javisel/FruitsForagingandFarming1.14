@@ -6,5 +6,6 @@ public class DoorBase extends DoorBlock {
     public DoorBase(String name, Properties builder) {
         super(builder);
         setRegistryName(name);
+
     }
 }

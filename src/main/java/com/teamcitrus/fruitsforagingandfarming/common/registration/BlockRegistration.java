@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BlockRegistration {
 
-    private static final Block.Properties WOOD_BLOCK_PROPERTY = Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0F,3.0F);
+    private static final Block.Properties WOOD_BLOCK_PROPERTY = Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0F, 3.0F);
     public static Block PALM_LOG = null;
     public static Block STRIPPED_PALM_LOG = null;
     public static Block PALM_WOOD = null;
@@ -42,18 +42,24 @@ public class BlockRegistration {
     public static Block PALM_WALL_SIGN = null;
     public static Block PALM_DOOR = null;
     public static Block PALM_TRAPDOOR = null;
+
+    //COCONUT
+    public static Block COCONUT = null;
+    public static Block SPLIT_COCONUT = null;
+
+
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll
                 (
                         PALM_LOG = new RotatedPillarBlockBase("palm_log", WOOD_BLOCK_PROPERTY),
-                        STRIPPED_PALM_LOG = new RotatedPillarBlockBase("stripped_palm_log",WOOD_BLOCK_PROPERTY),
-                        PALM_WOOD = new RotatedPillarBlockBase("palm_wood",WOOD_BLOCK_PROPERTY),
-                        STRIPPED_PALM_WOOD = new RotatedPillarBlockBase("stripped_palm_wood",WOOD_BLOCK_PROPERTY),
+                        STRIPPED_PALM_LOG = new RotatedPillarBlockBase("stripped_palm_log", WOOD_BLOCK_PROPERTY),
+                        PALM_WOOD = new RotatedPillarBlockBase("palm_wood", WOOD_BLOCK_PROPERTY),
+                        STRIPPED_PALM_WOOD = new RotatedPillarBlockBase("stripped_palm_wood", WOOD_BLOCK_PROPERTY),
                         PALM_PLANKS = new BlockBase("palm_planks", WOOD_BLOCK_PROPERTY),
-                        PALM_LEAVES = new LeavesBlockBase("palm_leaves",Block.Properties.create(Material.LEAVES,MaterialColor.GREEN)),
-                        PALM_SAPLING = new SaplingBase("palm_sapling",new PalmTree(),Block.Properties.create(Material.PLANTS,MaterialColor.GREEN).sound(SoundType.PLANT)),
-                        PALM_STAIRS = new StairsBase("palm_stairs",new Supplier<BlockState>() {
+                        PALM_LEAVES = new LeavesBlockBase("palm_leaves", Block.Properties.create(Material.LEAVES, MaterialColor.GREEN)),
+                        PALM_SAPLING = new SaplingBase("palm_sapling", new PalmTree(), Block.Properties.create(Material.PLANTS, MaterialColor.GREEN).sound(SoundType.PLANT)),
+                        PALM_STAIRS = new StairsBase("palm_stairs", new Supplier<BlockState>() {
                             @Override
                             public BlockState get() {
                                 return BlockRegistration.PALM_PLANKS.getDefaultState();
@@ -64,10 +70,12 @@ public class BlockRegistration {
                         PALM_PRESSURE_PLATE = new PressurePlateBase("palm_pressure_plate", PressurePlateBlock.Sensitivity.EVERYTHING, WOOD_BLOCK_PROPERTY),
                         PALM_FENCE = new FenceBlockBase("palm_fence", WOOD_BLOCK_PROPERTY),
                         PALM_FENCE_GATE = new FenceGateBlockBase("palm_fence_gate", WOOD_BLOCK_PROPERTY),
-                        PALM_SIGN = new StandingSignBase("palm_sign",WOOD_BLOCK_PROPERTY),
-                        PALM_WALL_SIGN = new WallSignBase("palm_wall_sign",WOOD_BLOCK_PROPERTY),
-                        PALM_DOOR = new DoorBase("palm_door",WOOD_BLOCK_PROPERTY),
-                        PALM_TRAPDOOR= new TrapdoorBase("palm_trapdoor",WOOD_BLOCK_PROPERTY)
+                        PALM_SIGN = new StandingSignBase("palm_sign", WOOD_BLOCK_PROPERTY),
+                        PALM_WALL_SIGN = new WallSignBase("palm_wall_sign", WOOD_BLOCK_PROPERTY),
+                        PALM_DOOR = new DoorBase("palm_door", WOOD_BLOCK_PROPERTY),
+                        PALM_TRAPDOOR = new TrapdoorBase("palm_trapdoor", WOOD_BLOCK_PROPERTY),
+                        COCONUT = new BlockCoconut(),
+                        SPLIT_COCONUT = new BlockSplitCoconut()
                 );
     }
 
@@ -83,19 +91,23 @@ public class BlockRegistration {
                         new ItemBlockBase(PALM_WOOD, new Item.Properties()),
                         new ItemBlockBase(PALM_PLANKS, new Item.Properties()),
                         new ItemBlockBase(PALM_LEAVES, new Item.Properties()),
-                        new ItemBlockBase(PALM_SAPLING,new Item.Properties()),
-                        new ItemBlockBase(PALM_SLAB,new Item.Properties()),
-                        new ItemBlockBase(PALM_STAIRS,new Item.Properties()),
+                        new ItemBlockBase(PALM_SAPLING, new Item.Properties()),
+                        new ItemBlockBase(PALM_SLAB, new Item.Properties()),
+                        new ItemBlockBase(PALM_STAIRS, new Item.Properties()),
                         new ItemBlockBase(PALM_BUTTON, new Item.Properties()),
-                        new ItemBlockBase(PALM_PRESSURE_PLATE,new Item.Properties()),
-                        new ItemBlockBase(PALM_FENCE,new Item.Properties()),
-                        new ItemBlockBase(PALM_FENCE_GATE,new Item.Properties()),
-                        new SignItem(new Item.Properties().group(FruitsForagingAndFarming.itemGroup),PALM_SIGN,PALM_WALL_SIGN).setRegistryName(FruitsForagingAndFarming.MODID,"palm_sign"),
-                        new ItemBlockBase(PALM_DOOR,new Item.Properties()),
-                        new ItemBlockBase(PALM_TRAPDOOR,new Item.Properties())
+                        new ItemBlockBase(PALM_PRESSURE_PLATE, new Item.Properties()),
+                        new ItemBlockBase(PALM_FENCE, new Item.Properties()),
+                        new ItemBlockBase(PALM_FENCE_GATE, new Item.Properties()),
+                        new SignItem(new Item.Properties().group(FruitsForagingAndFarming.itemGroup), PALM_SIGN, PALM_WALL_SIGN).setRegistryName(FruitsForagingAndFarming.MODID, "palm_sign"),
+                        new ItemBlockBase(PALM_DOOR, new Item.Properties()),
+                        new ItemBlockBase(PALM_TRAPDOOR, new Item.Properties()),
+                        new ItemBlockBase(COCONUT, new Item.Properties()),
+                        new ItemBlockBase(SPLIT_COCONUT, new Item.Properties())
 
-                        );
+                );
 
 
     }
+
+
 }

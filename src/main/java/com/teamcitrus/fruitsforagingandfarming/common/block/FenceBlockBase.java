@@ -6,8 +6,8 @@ import net.minecraft.block.FenceBlock;
 public class FenceBlockBase extends FenceBlock {
 
 
-    public FenceBlockBase(String name,Properties properties) {
+    public FenceBlockBase(String name, Properties properties) {
         super(properties);
-        setRegistryName(FruitsForagingAndFarming.MODID,name);
+        setRegistryName(FruitsForagingAndFarming.MODID, name);
     }
 }

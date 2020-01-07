@@ -2,7 +2,10 @@ package com.teamcitrus.fruitsforagingandfarming.client.render.entity;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.StandingSignBlock;
+import net.minecraft.block.WallSignBlock;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.RenderComponentsUtil;
@@ -21,7 +24,7 @@ import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class PalmSignRenderer extends TileEntityRenderer<SignTileEntity> {
-    private static final ResourceLocation SIGN = new ResourceLocation(FruitsForagingAndFarming.MODID,"textures/entity/palm_sign.png");
+    private static final ResourceLocation SIGN = new ResourceLocation(FruitsForagingAndFarming.MODID, "textures/entity/palm_sign.png");
 
     private final SignModel model = new SignModel();
 
@@ -30,11 +33,11 @@ public class PalmSignRenderer extends TileEntityRenderer<SignTileEntity> {
         GlStateManager.pushMatrix();
         float f = 0.6666667F;
         if (blockstate.getBlock() instanceof StandingSignBlock) {
-            GlStateManager.translatef((float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F);
-            GlStateManager.rotatef(-((float)(blockstate.get(StandingSignBlock.ROTATION) * 360) / 16.0F), 0.0F, 1.0F, 0.0F);
+            GlStateManager.translatef((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
+            GlStateManager.rotatef(-((float) (blockstate.get(StandingSignBlock.ROTATION) * 360) / 16.0F), 0.0F, 1.0F, 0.0F);
             this.model.getSignStick().showModel = true;
         } else {
-            GlStateManager.translatef((float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F);
+            GlStateManager.translatef((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
             GlStateManager.rotatef(-blockstate.get(WallSignBlock.FACING).getHorizontalAngle(), 0.0F, 1.0F, 0.0F);
             GlStateManager.translatef(0.0F, -0.3125F, -0.4375F);
             this.model.getSignStick().showModel = false;
@@ -64,13 +67,13 @@ public class PalmSignRenderer extends TileEntityRenderer<SignTileEntity> {
         GlStateManager.depthMask(false);
         int i = tileEntityIn.getTextColor().func_218388_g();
         if (destroyStage < 0) {
-            for(int j = 0; j < 4; ++j) {
+            for (int j = 0; j < 4; ++j) {
                 String s = tileEntityIn.getRenderText(j, (p_212491_1_) -> {
                     List<ITextComponent> list = RenderComponentsUtil.splitText(p_212491_1_, 90, fontrenderer, false, true);
                     return list.isEmpty() ? "" : list.get(0).getFormattedText();
                 });
                 if (s != null) {
-                    fontrenderer.drawString(s, (float)(-fontrenderer.getStringWidth(s) / 2), (float)(j * 10 - tileEntityIn.signText.length * 5), i);
+                    fontrenderer.drawString(s, (float) (-fontrenderer.getStringWidth(s) / 2), (float) (j * 10 - tileEntityIn.signText.length * 5), i);
                     if (j == tileEntityIn.getLineBeingEdited() && tileEntityIn.func_214065_t() >= 0) {
                         int k = fontrenderer.getStringWidth(s.substring(0, Math.max(Math.min(tileEntityIn.func_214065_t(), s.length()), 0)));
                         int l = fontrenderer.getBidiFlag() ? -1 : 1;
@@ -80,7 +83,7 @@ public class PalmSignRenderer extends TileEntityRenderer<SignTileEntity> {
                             if (tileEntityIn.func_214065_t() < s.length()) {
                                 AbstractGui.fill(i1, j1 - 1, i1 + 1, j1 + 9, -16777216 | i);
                             } else {
-                                fontrenderer.drawString("_", (float)i1, (float)j1, i);
+                                fontrenderer.drawString("_", (float) i1, (float) j1, i);
                             }
                         }
 
@@ -108,7 +111,7 @@ public class PalmSignRenderer extends TileEntityRenderer<SignTileEntity> {
     }
 
     private ResourceLocation func_217658_a(Block p_217658_1_) {
-        return  SIGN;
+        return SIGN;
     }
 
     private void func_217657_a(int p_217657_1_, int p_217657_2_, int p_217657_3_, int p_217657_4_) {
@@ -119,10 +122,10 @@ public class PalmSignRenderer extends TileEntityRenderer<SignTileEntity> {
         GlStateManager.enableColorLogicOp();
         GlStateManager.logicOp(GlStateManager.LogicOp.OR_REVERSE);
         bufferbuilder.begin(7, DefaultVertexFormats.POSITION);
-        bufferbuilder.pos((double)p_217657_1_, (double)p_217657_4_, 0.0D).endVertex();
-        bufferbuilder.pos((double)p_217657_3_, (double)p_217657_4_, 0.0D).endVertex();
-        bufferbuilder.pos((double)p_217657_3_, (double)p_217657_2_, 0.0D).endVertex();
-        bufferbuilder.pos((double)p_217657_1_, (double)p_217657_2_, 0.0D).endVertex();
+        bufferbuilder.pos(p_217657_1_, p_217657_4_, 0.0D).endVertex();
+        bufferbuilder.pos(p_217657_3_, p_217657_4_, 0.0D).endVertex();
+        bufferbuilder.pos(p_217657_3_, p_217657_2_, 0.0D).endVertex();
+        bufferbuilder.pos(p_217657_1_, p_217657_2_, 0.0D).endVertex();
         tessellator.draw();
         GlStateManager.disableColorLogicOp();
         GlStateManager.enableTexture();

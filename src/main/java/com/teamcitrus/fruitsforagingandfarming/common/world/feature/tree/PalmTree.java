@@ -2,7 +2,6 @@ package com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree;
 
 import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
-import net.minecraft.world.gen.feature.BirchTreeFeature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 import javax.annotation.Nullable;

@@ -1,6 +1,6 @@
 package com.teamcitrus.fruitsforagingandfarming.common.item;
 
-import com.teamcitrus.fruitsforagingandfarming.common.entity.PalmBoat;
+import com.teamcitrus.fruitsforagingandfarming.common.entity.FFFBoat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -42,8 +42,8 @@ public class PalmBoatItem extends BoatItem {
             if (!list.isEmpty()) {
                 Vec3d vec3d1 = playerIn.getEyePosition(1.0F);
 
-                for(Entity entity : list) {
-                    AxisAlignedBB axisalignedbb = entity.getBoundingBox().grow((double)entity.getCollisionBorderSize());
+                for (Entity entity : list) {
+                    AxisAlignedBB axisalignedbb = entity.getBoundingBox().grow(entity.getCollisionBorderSize());
                     if (axisalignedbb.contains(vec3d1)) {
                         return new ActionResult<>(ActionResultType.PASS, itemstack);
                     }
@@ -51,7 +51,7 @@ public class PalmBoatItem extends BoatItem {
             }
 
             if (raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
-                BoatEntity boatentity = new PalmBoat(worldIn, raytraceresult.getHitVec().x, raytraceresult.getHitVec().y, raytraceresult.getHitVec().z);
+                FFFBoat boatentity = new FFFBoat(worldIn, raytraceresult.getHitVec().x, raytraceresult.getHitVec().y, raytraceresult.getHitVec().z);
                 boatentity.rotationYaw = playerIn.rotationYaw;
                 if (!worldIn.isCollisionBoxesEmpty(boatentity, boatentity.getBoundingBox().grow(-0.1D))) {
                     return new ActionResult<>(ActionResultType.FAIL, itemstack);
@@ -72,7 +72,6 @@ public class PalmBoatItem extends BoatItem {
             }
         }
     }
-
 
 
 }

@@ -1,0 +1,17 @@
+{
+  "variants": {
+
+    "facing=north": {
+      "model": "fruits_foraging_and_farming:block/split_coconut_north_south"
+    },
+    "facing=south": {
+      "model": "fruits_foraging_and_farming:block/split_coconut_north_south"
+    },
+    "facing=east": {
+      "model": "fruits_foraging_and_farming:block/split_coconut_east_west"
+    },
+    "facing=west": {
+      "model": "fruits_foraging_and_farming:block/split_coconut_east_west"
+    }
+  }
+}

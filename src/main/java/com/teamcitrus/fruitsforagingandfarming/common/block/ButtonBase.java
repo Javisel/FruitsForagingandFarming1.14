@@ -6,6 +6,6 @@ import net.minecraft.block.WoodButtonBlock;
 public class ButtonBase extends WoodButtonBlock {
     public ButtonBase(String name, Properties properties) {
         super(properties);
-        setRegistryName(FruitsForagingAndFarming.MODID,name);
+        setRegistryName(FruitsForagingAndFarming.MODID, name);
     }
 }
