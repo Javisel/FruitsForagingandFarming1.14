@@ -1,5 +1,6 @@
 package com.teamcitrus.fruitsforagingandfarming.common.item;
 
+import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
 import com.teamcitrus.fruitsforagingandfarming.common.entity.FFFBoat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.BoatEntity;
@@ -25,7 +26,7 @@ public class PalmBoatItem extends BoatItem {
 
 
     public PalmBoatItem(String name, Properties properties) {
-        super(BoatEntity.Type.OAK, properties);
+        super(BoatEntity.Type.OAK, properties.group(FruitsForagingAndFarming.itemGroup));
         setRegistryName(name);
     }
 

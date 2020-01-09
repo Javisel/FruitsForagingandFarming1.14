@@ -67,7 +67,7 @@ public class FFFFBoatRenderer extends EntityRenderer<FFFBoat> {
     }
 
     protected ResourceLocation getEntityTexture(FFFBoat entity) {
-        return BOAT_TEXTURES[entity.getBoatType().ordinal()];
+        return BOAT_TEXTURES[0];
     }
 
     public boolean isMultipass() {
