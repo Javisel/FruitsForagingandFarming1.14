@@ -1,5 +1,5 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "III",
     "IXI",
@@ -11,14 +11,13 @@
     },
     "X": [
       {
-        "item": "minecraft:stone",
-        "data": 0
+        "item": "minecraft:stone"
       }
     ]
   },
   "result": {
-    "item": "minecraft:monster_egg",
-    "count": 1,
-    "data": 0
+    "item": "minecraft:infested_stone",
+    "count": 1
+
   }
 }

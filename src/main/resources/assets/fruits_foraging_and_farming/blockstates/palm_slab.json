@@ -1,7 +1,13 @@
 {
   "variants": {
-    "type=bottom": { "model": "fruits_foraging_and_farming:block/palm_slab" },
-    "type=top": { "model": "fruits_foraging_and_farming:block/palm_slab_top" },
-    "type=double": { "model": "fruits_foraging_and_farming:block/palm_planks" }
+    "type=bottom": {
+      "model": "fruits_foraging_and_farming:block/palm_slab"
+    },
+    "type=top": {
+      "model": "fruits_foraging_and_farming:block/palm_slab_top"
+    },
+    "type=double": {
+      "model": "fruits_foraging_and_farming:block/palm_planks"
+    }
   }
 }

@@ -1,7 +1,13 @@
 {
   "variants": {
-    "type=bottom": { "model": "fruits_foraging_and_farming:block/cut_black_sandstone_slab" },
-    "type=top": { "model": "fruits_foraging_and_farming:block/cut_black_sandstone_slab_top" },
-    "type=double": { "model": "fruits_foraging_and_farming:block/cut_black_sandstone" }
+    "type=bottom": {
+      "model": "fruits_foraging_and_farming:block/cut_black_sandstone_slab"
+    },
+    "type=top": {
+      "model": "fruits_foraging_and_farming:block/cut_black_sandstone_slab_top"
+    },
+    "type=double": {
+      "model": "fruits_foraging_and_farming:block/cut_black_sandstone"
+    }
   }
 }

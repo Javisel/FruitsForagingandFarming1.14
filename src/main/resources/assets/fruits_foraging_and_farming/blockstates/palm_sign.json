@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "fruits_foraging_and_farming:block/palm_sign" }
+    "": {
+      "model": "fruits_foraging_and_farming:block/palm_sign"
+    }
   }
 }

@@ -1,7 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
+  "group": "wooden_slab",
 
+  "pattern": [
     "###"
   ],
   "key": {
@@ -11,7 +12,6 @@
   },
   "result": {
     "item": "fruits_foraging_and_farming:palm_slab",
-    "data" : 0,
     "count": 6
   }
 }

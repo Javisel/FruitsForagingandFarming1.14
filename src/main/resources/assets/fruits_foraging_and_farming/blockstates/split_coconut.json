@@ -1,6 +1,5 @@
 {
   "variants": {
-
     "facing=north": {
       "model": "fruits_foraging_and_farming:block/split_coconut_north_south"
     },

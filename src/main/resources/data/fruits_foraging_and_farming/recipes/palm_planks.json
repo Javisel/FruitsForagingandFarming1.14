@@ -1,13 +1,13 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
   "ingredients": [
     {
-      "item": "fruits_foraging_and_farming:palm_log",
-      "data": 0
+      "tag": "fruits_foraging_and_farming:palm_logs"
     }
   ],
   "result": {
     "item": "fruits_foraging_and_farming:palm_planks",
-    "count": 4
+    "count" : 4
   }
 }

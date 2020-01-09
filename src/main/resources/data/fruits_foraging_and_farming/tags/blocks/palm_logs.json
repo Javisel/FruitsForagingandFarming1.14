@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "fruits_foraging_and_farming:palm_log",
+    "fruits_foraging_and_farming:palm_wood",
+    "fruits_foraging_and_farming:stripped_palm_log",
+    "fruits_foraging_and_farming:stripped_palm_wood"
+  ]
+}

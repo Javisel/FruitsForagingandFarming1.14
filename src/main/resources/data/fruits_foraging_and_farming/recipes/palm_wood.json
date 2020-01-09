@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_stairs",
+
+  "pattern": [
+    "## ",
+    "## ",
+    "   "
+  ],
+  "key": {
+    "#": {
+      "item": "fruits_foraging_and_farming:palm_log"
+    }
+  },
+  "result": {
+    "item": "fruits_foraging_and_farming:palm_wood",
+    "count": 3
+  }
+}

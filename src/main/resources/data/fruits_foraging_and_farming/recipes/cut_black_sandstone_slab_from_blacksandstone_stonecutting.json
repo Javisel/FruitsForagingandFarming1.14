@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "fruits_foraging_and_farming:black_sandstone"
+  },
+  "result": "fruits_foraging_and_farming:cut_black_sandstone_slab",
+  "count": 2
+}

@@ -1,7 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
+  "group": "wooden_stairs",
 
+  "pattern": [
     "#  ",
     "## ",
     "###"

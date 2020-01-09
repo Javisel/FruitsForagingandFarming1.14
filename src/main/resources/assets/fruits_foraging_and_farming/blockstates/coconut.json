@@ -1,21 +1,19 @@
 {
   "variants": {
-
     "state=0": {
       "model": "fruits_foraging_and_farming:block/coconut_stage_0"
     },
     "state=1": {
       "model": "fruits_foraging_and_farming:block/coconut_stage_1"
     },
- "state=2": {
+    "state=2": {
       "model": "fruits_foraging_and_farming:block/coconut_stage_2"
     },
     "state=3": {
       "model": "fruits_foraging_and_farming:block/coconut_stage_3"
     },
- "state=4": {
+    "state=4": {
       "model": "fruits_foraging_and_farming:block/coconut_stage_4"
     }
-
   }
 }

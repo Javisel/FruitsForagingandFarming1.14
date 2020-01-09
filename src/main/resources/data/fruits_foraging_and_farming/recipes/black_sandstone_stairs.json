@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-
     "#  ",
     "## ",
     "###"
@@ -10,15 +9,12 @@
     "#": [
       {
         "item": "fruits_foraging_and_farming:black_sandstone"
-
       },
       {
-        "item": "fruits_foraging_and_farming:black_sandstone_chiseled"
-
+        "item": "fruits_foraging_and_farming:chiseled_black_sandstone"
       },
       {
-        "item": "fruits_foraging_and_farming:black_sandstone_smooth"
-
+        "item": "fruits_foraging_and_farming:cut_black_sandstone"
       }
     ]
   },

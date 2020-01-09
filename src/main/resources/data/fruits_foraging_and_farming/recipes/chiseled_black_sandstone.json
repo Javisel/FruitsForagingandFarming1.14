@@ -6,15 +6,13 @@
   ],
   "key": {
     "#": {
-      "item": "fruits_foraging_and_farming:black_sandstone_half_slab",
-
-      "data" : 0
+      "item": "fruits_foraging_and_farming:black_sandstone_slab",
+      "data": 0
     }
   },
   "result": {
-    "item": "fruits_foraging_and_farming:black_sandstone_chiseled",
+    "item": "fruits_foraging_and_farming:chiseled_black_sandstone",
     "count": 1,
     "data": 0
-
   }
 }

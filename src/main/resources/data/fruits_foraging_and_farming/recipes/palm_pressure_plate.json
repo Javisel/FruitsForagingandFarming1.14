@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_pressure_plate",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "fruits_foraging_and_farming:palm_planks"
+    }
+  },
+  "result": {
+    "item": "fruits_foraging_and_farming:palm_pressure_plate"
+  }
+}

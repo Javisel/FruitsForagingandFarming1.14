@@ -1,7 +1,16 @@
 {
   "variants": {
-    "axis=y":  { "model": "fruits_foraging_and_farming:block/palm_wood" },
-    "axis=z":   { "model": "fruits_foraging_and_farming:block/palm_wood", "x": 90 },
-    "axis=x":   { "model": "fruits_foraging_and_farming:block/palm_wood", "x": 90, "y": 90 }
+    "axis=y": {
+      "model": "fruits_foraging_and_farming:block/palm_wood"
+    },
+    "axis=z": {
+      "model": "fruits_foraging_and_farming:block/palm_wood",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "fruits_foraging_and_farming:block/palm_wood",
+      "x": 90,
+      "y": 90
+    }
   }
 }

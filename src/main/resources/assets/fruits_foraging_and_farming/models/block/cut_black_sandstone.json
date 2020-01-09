@@ -2,7 +2,6 @@
   "parent": "block/cube_column",
   "textures": {
     "top": "fruits_foraging_and_farming:block/black_sandstone_top",
-
     "end": "fruits_foraging_and_farming:block/black_sandstone_top",
     "side": "fruits_foraging_and_farming:block/cut_black_sandstone"
   }
