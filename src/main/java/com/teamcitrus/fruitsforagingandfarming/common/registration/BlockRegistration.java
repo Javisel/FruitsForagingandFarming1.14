@@ -67,10 +67,12 @@ public class BlockRegistration {
     public static void registerBlocks(final RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll
                 (
-                        PALM_LOG = new RotatedPillarBlockBase("palm_log", WOOD_BLOCK_PROPERTY),
                         STRIPPED_PALM_LOG = new RotatedPillarBlockBase("stripped_palm_log", WOOD_BLOCK_PROPERTY),
-                        PALM_WOOD = new RotatedPillarBlockBase("palm_wood", WOOD_BLOCK_PROPERTY),
+                        PALM_LOG = new StripableBlock("palm_log", (RotatedPillarBlock) STRIPPED_PALM_LOG, WOOD_BLOCK_PROPERTY),
+
                         STRIPPED_PALM_WOOD = new RotatedPillarBlockBase("stripped_palm_wood", WOOD_BLOCK_PROPERTY),
+                        PALM_WOOD = new StripableBlock("palm_wood", (RotatedPillarBlock) STRIPPED_PALM_WOOD, WOOD_BLOCK_PROPERTY),
+
                         PALM_PLANKS = new BlockBase("palm_planks", WOOD_BLOCK_PROPERTY),
                         PALM_LEAVES = new LeavesBlockBase("palm_leaves", Block.Properties.create(Material.LEAVES, MaterialColor.GREEN)),
                         PALM_SAPLING = new SaplingBase("palm_sapling", new PalmTree(), Block.Properties.create(Material.PLANTS, MaterialColor.GREEN).sound(SoundType.PLANT)),

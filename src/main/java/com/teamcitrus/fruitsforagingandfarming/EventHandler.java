@@ -1,15 +1,24 @@
 package com.teamcitrus.fruitsforagingandfarming;
 
 import com.teamcitrus.fruitsforagingandfarming.client.config.ClientConfig;
+import com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.EffectRegistration;
+import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.SilverfishEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.SwordItem;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -34,6 +43,25 @@ public class EventHandler {
     }
 
 
+
+
+
+    @SubscribeEvent
+    public void sliceCoconut(PlayerInteractEvent.LeftClickBlock e){
+
+        if ((e.getItemStack().getItem() instanceof SwordItem || e.getItemStack().getItem() instanceof AxeItem) && e.getWorld().getBlockState(e.getPos()).getBlock() == BlockRegistration.COCONUT) {
+
+            e.getWorld().setBlockState(e.getPos(),BlockRegistration.SPLIT_COCONUT.getStateForPlacement(e.getWorld().getBlockState(e.getPos()),e.getFace(),e.getWorld().getBlockState(e.getPos()),e.getWorld(),e.getPos(),e.getPos(),null));
+
+
+
+        }
+
+
+
+
+
+    }
 
 
 

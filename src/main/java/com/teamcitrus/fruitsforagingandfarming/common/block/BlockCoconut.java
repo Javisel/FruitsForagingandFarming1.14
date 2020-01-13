@@ -266,9 +266,6 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
 
     }
 
-    @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        return func_220055_a(worldIn, pos.down(), Direction.UP);
-    }
+
 }
 
