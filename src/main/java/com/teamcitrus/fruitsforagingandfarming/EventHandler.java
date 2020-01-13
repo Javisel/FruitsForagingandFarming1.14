@@ -3,9 +3,11 @@ package com.teamcitrus.fruitsforagingandfarming;
 import com.teamcitrus.fruitsforagingandfarming.client.config.ClientConfig;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.EffectRegistration;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.SilverfishEntity;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,6 +40,7 @@ public class EventHandler {
 
     @SubscribeEvent
     public void InfestationExplosion(LivingDeathEvent e) {
+
 
         if (e.getEntityLiving().getActivePotionEffect(EffectRegistration.INFESTATION) != null) {
 

@@ -22,6 +22,8 @@ import java.util.function.Supplier;
 public class BlockRegistration {
 
     private static final Block.Properties WOOD_BLOCK_PROPERTY = Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0F, 3.0F);
+    private static final Block.Properties WOOD_SIGN_PROPERTIES = Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0F, 3.0F).doesNotBlockMovement();
+
     private static final  Block.Properties SANDSTONE_PROPERTIES =Block.Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(0.8F);
 
     public static Block PALM_LOG = null;
@@ -78,8 +80,8 @@ public class BlockRegistration {
                         PALM_PRESSURE_PLATE = new PressurePlateBase("palm_pressure_plate", PressurePlateBlock.Sensitivity.EVERYTHING, WOOD_BLOCK_PROPERTY),
                         PALM_FENCE = new FenceBlockBase("palm_fence", WOOD_BLOCK_PROPERTY),
                         PALM_FENCE_GATE = new FenceGateBlockBase("palm_fence_gate", WOOD_BLOCK_PROPERTY),
-                       PALM_SIGN = new StandingSignBase("palm_sign", WOOD_BLOCK_PROPERTY),
-                        PALM_WALL_SIGN = new WallSignBase("palm_wall_sign", WOOD_BLOCK_PROPERTY),
+                       PALM_SIGN = new StandingSignBase("palm_sign", WOOD_SIGN_PROPERTIES),
+                        PALM_WALL_SIGN = new WallSignBase("palm_wall_sign",WOOD_SIGN_PROPERTIES),
                         PALM_DOOR = new DoorBase("palm_door", WOOD_BLOCK_PROPERTY),
                         PALM_TRAPDOOR = new TrapdoorBase("palm_trapdoor", WOOD_BLOCK_PROPERTY),
                         COCONUT = new BlockCoconut(),

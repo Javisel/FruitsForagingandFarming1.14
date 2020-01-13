@@ -8,17 +8,22 @@ import net.minecraft.entity.item.BoatEntity;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 
 public class EntityTypeRegistration {
-    public static  EntityType<BoatEntity> FFF_BOAT = (EntityType<BoatEntity>) EntityType.Builder.<BoatEntity>create(FFFBoat::new, EntityClassification.MISC).size(1.375F, 0.5625F).build(FruitsForagingAndFarming.MODID + ":palm_boat").setRegistryName(FruitsForagingAndFarming.MODID + ":palm_boat");
-
+    public static EntityType<?> FFF_BOAT = null;
 
     @SubscribeEvent
     public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
 
+      FFF_BOAT =  EntityType.Builder.<BoatEntity>create(FFFBoat::new, EntityClassification.MONSTER).setCustomClientFactory(FFFBoat::new).size(1.375F, 0.5625F).build(FruitsForagingAndFarming.MODID + ":fff_boat");
+
+        EntityTypeRegistration.FFF_BOAT.setRegistryName(FruitsForagingAndFarming.MODID,"fff_boat");
+
         event.getRegistry().registerAll(FFF_BOAT);
+
 
     }
 
