@@ -6,17 +6,15 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Config {
+public class Config 
+{
 
     private  static List<FoodData> foodDataList = new ArrayList<>();
-
+    
+    
     public static FoodData AVOCADO = new FoodData("avocado",3,.6);
     public static FoodData BANANA = new FoodData("banana",2,.21);
     public static FoodData BLUEBERRY = new FoodData("blueberry",1,0.125);
-
-
-
-
     public static FoodData COCONUT_CHUNK = new FoodData("coconut_chunk",3,0.3);
     public static FoodData CORN = new FoodData("corn",3,.25f);
     public static FoodData CHOCOLATE_MILK_BOTTLE = new FoodData("chocolate_milk_bottle",1,0.2);
@@ -35,34 +33,23 @@ public class Config {
     public static FoodData PINEAPPLE = new FoodData("pineapple",3,.5);
     public static FoodData PLUM = new FoodData("plum",1,0.5);
     public static FoodData TURNIP= new FoodData("turnip",1,.5);
-
-
-
-
-
-
     public static void init(ForgeConfigSpec.Builder server) {
 
         server.push("Food Configurations");
-        for (FoodData data : foodDataList) {
+        for (FoodData data : foodDataList) 
+        {
 
             server.push(data.name + " data");
             data.shanksRestored = server.comment(data.name + " shanks restored").defineInRange(data.name + "shanks", data.defaultshanksRestored, -20, 100);
             data.saturation = server.comment(data.name + " saturation provided").defineInRange(data.name + "saturation", data.defaultSaturation, -100, 100);
             server.pop();
 
-
         }
         server.pop();
-
-
     }
 
-
-
-
-
-    public static class FoodData {
+    public static class FoodData 
+    {
 
         public ForgeConfigSpec.IntValue shanksRestored;
         public ForgeConfigSpec.DoubleValue saturation;
@@ -75,34 +62,28 @@ public class Config {
             defaultshanksRestored=defaultShanks;
             this.defaultSaturation=defaultSaturation;
             foodDataList.add(this);
+            
         }
 
-        public float getSaturation() {
-
+        public float getSaturation() 
+        {
 
             return  saturation.get().floatValue();
+            
         }
 
-        public int getShanks() {
-
+        public int getShanks() 
+        {
 
             return shanksRestored.get();
+            
         }
 
-        public Food getDefaultFood() {
-
+        public Food getDefaultFood() 
+        {
 
             return new Food.Builder().hunger(getShanks()).saturation(getSaturation()).build();
+            
         }
-
-
-
     }
-
-
-
-
-
-
-
 }
