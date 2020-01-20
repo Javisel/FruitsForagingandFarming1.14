@@ -8,8 +8,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.DamageSource;
@@ -40,10 +38,9 @@ import static com.teamcitrus.fruitsforagingandfarming.common.registration.BlockR
 public class FruitsForagingAndFarming {
     public static final String MODID = "fruits_foraging_and_farming";
     public static final ItemGroup itemGroup = new FruitsForagingAndFarmingItemGroup();
-
+    public static final DamageSource silverfishAlien = new SilverfishAlien();
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
-    public static final DamageSource silverfishAlien = new SilverfishAlien();
 
     public FruitsForagingAndFarming() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ConfigSetup.SERVER, "fruits_foraging_and_farming_server.toml");

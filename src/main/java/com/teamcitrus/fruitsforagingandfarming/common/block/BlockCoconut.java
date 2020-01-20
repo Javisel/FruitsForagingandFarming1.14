@@ -1,8 +1,10 @@
 package com.teamcitrus.fruitsforagingandfarming.common.block;
 
-import com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.ItemRegistration;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FallingBlock;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.item.ItemEntity;
@@ -66,12 +68,10 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
                     float f1 = 0.0F;
                     BlockState iblockstate = worldIn.getBlockState(blockpos.add(x, y, z));
 
-                    if (iblockstate.getBlock() == BlockRegistration.PALM_LOG) {
+                    if (iblockstate.isIn(BlockTags.LEAVES)) {
                         f1 = 1.0F;
 
-                        if (iblockstate.getBlock() instanceof LeavesBlock) {
-                            f1 = 3.0F;
-                        }
+
                     }
 
                     if (x != 0 || z != 0) {
@@ -95,7 +95,7 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
         return state;
     }
 
-    protected int getState(BlockState state) {
+    public int getState(BlockState state) {
         return state.get(BlockCoconut.state);
     }
 
@@ -161,6 +161,7 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
     @Override
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
 
+        checkFallable(worldIn, pos);
 
         if (!worldIn.isAreaLoaded(pos, 1) || worldIn.isRemote) {
             return;
@@ -202,19 +203,26 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
     @Override
     public void onNeighborChange(BlockState state, IWorldReader world, BlockPos pos, BlockPos neighbor) {
 
-        if (!world.isRemote() && !world.getBlockState(pos.up()).getBlock().getTags().contains(BlockTags.LEAVES) && world.isAirBlock(pos.down())) {
-            int i = this.getState(state);
-            World worlditable = world.getDimension().getWorld();
-            FallingBlockEntity entityfallingblock = new FallingBlockEntity(worlditable, (double) pos.getX() + 0.5D, pos.getY(), (double) pos.getZ() + 0.5D, this.getStateWithMeta(i));
-            entityfallingblock.setHurtEntities(true);
-            worlditable.addEntity(entityfallingblock);
-
-        } else {
-
-
+        if (!world.isRemote()) {
+            checkFallable(world.getDimension().getWorld(), pos);
         }
 
+    }
 
+    private void checkFallable(World worldIn, BlockPos pos) {
+        if (canFallThrough(worldIn.getBlockState(pos.down())) && !worldIn.getBlockState(pos.up()).isIn(BlockTags.LEAVES) && pos.getY() >= 0) {
+            if (!worldIn.isRemote) {
+                System.out.println(worldIn.getBlockState(pos.up()).getBlock().getTags().contains(BlockTags.LEAVES));
+                if (this.getState(worldIn.getBlockState(pos)) < 2) {
+                    worldIn.removeBlock(pos, false);
+                } else {
+                    FallingBlockEntity fallingblockentity = new FallingBlockEntity(worldIn, (double) pos.getX() + 0.5D, pos.getY(), (double) pos.getZ() + 0.5D, this.getStateWithMeta(4));
+                    this.onStartFalling(fallingblockentity);
+                    worldIn.addEntity(fallingblockentity);
+                }
+            }
+
+        }
     }
 
     protected void onStartFalling(FallingBlockEntity fallingEntity) {
@@ -256,8 +264,8 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
 
                 worldIn.destroyBlock(pos, false);
 
-                ItemStack stack = new ItemStack(ItemRegistration.COCONUT_CHUNK,4);
-                ItemEntity itemEntity = new ItemEntity(worldIn,pos.getX(),pos.getY(),pos.getZ(),stack);
+                ItemStack stack = new ItemStack(ItemRegistration.COCONUT_CHUNK, 4);
+                ItemEntity itemEntity = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack);
                 worldIn.addEntity(itemEntity);
 
             }

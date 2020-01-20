@@ -68,7 +68,7 @@ public class BlockSplitCoconut extends FallingBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockState state, Direction facing, BlockState state2, IWorld world, BlockPos pos1, BlockPos pos2, Hand hand) {
-        if (Direction.byHorizontalIndex(facing.getHorizontalIndex())  == Direction.NORTH ||Direction.byHorizontalIndex(facing.getHorizontalIndex()) == Direction.SOUTH) {
+        if (Direction.byHorizontalIndex(facing.getHorizontalIndex()) == Direction.NORTH || Direction.byHorizontalIndex(facing.getHorizontalIndex()) == Direction.SOUTH) {
 
             return this.getDefaultState().with(HORIZONTAL_FACING, Direction.NORTH);
 
@@ -76,8 +76,6 @@ public class BlockSplitCoconut extends FallingBlock {
         }
 
         return this.getDefaultState().with(HORIZONTAL_FACING, Direction.WEST);
-
-
 
 
     }
@@ -90,8 +88,8 @@ public class BlockSplitCoconut extends FallingBlock {
 
                 worldIn.destroyBlock(pos, false);
 
-                ItemStack stack = new ItemStack(ItemRegistration.COCONUT_CHUNK,4);
-                ItemEntity itemEntity = new ItemEntity(worldIn,pos.getX(),pos.getY(),pos.getZ(),stack);
+                ItemStack stack = new ItemStack(ItemRegistration.COCONUT_CHUNK, 4);
+                ItemEntity itemEntity = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack);
                 worldIn.addEntity(itemEntity);
 
             }

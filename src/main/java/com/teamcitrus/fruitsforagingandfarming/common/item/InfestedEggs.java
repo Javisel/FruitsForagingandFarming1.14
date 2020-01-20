@@ -12,7 +12,6 @@ import net.minecraft.world.World;
 public class InfestedEggs extends ItemBase {
 
 
-
     public InfestedEggs() {
         super("infested_eggs", new Item.Properties().food(new Food.Builder().hunger(Config.INFESTED_EGGS.getShanks()).saturation(
                 Config.INFESTED_EGGS.getSaturation()
@@ -21,10 +20,10 @@ public class InfestedEggs extends ItemBase {
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-       ItemStack stack1 = super.onItemUseFinish(stack,worldIn,entityLiving);
+        ItemStack stack1 = super.onItemUseFinish(stack, worldIn, entityLiving);
 
-       entityLiving.addPotionEffect(new EffectInstance(EffectRegistration.INFESTATION,100,0));
-       return  stack1;
+        entityLiving.addPotionEffect(new EffectInstance(EffectRegistration.INFESTATION, 100, 0));
+        return stack1;
     }
 
 }

@@ -1,7 +1,6 @@
 package com.teamcitrus.fruitsforagingandfarming.common.effect;
 
 import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
-import com.teamcitrus.fruitsforagingandfarming.common.registration.ItemRegistration;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.SilverfishEntity;
@@ -20,7 +19,6 @@ public class Infestation extends EffectBase {
     }
 
 
-
     @Override
     public void performEffect(LivingEntity entityLivingBaseIn, int amplifier) {
 
@@ -33,8 +31,8 @@ public class Infestation extends EffectBase {
             for (int i = 0; i < 1 + amplifier; i++) {
                 entityLivingBaseIn.attackEntityFrom(FruitsForagingAndFarming.silverfishAlien, 1f);
 
-                SilverfishEntity silverfish = new SilverfishEntity(EntityType.SILVERFISH,entityLivingBaseIn.getEntityWorld());
-                    silverfish.setPositionAndRotation(entityLivingBaseIn.posX,entityLivingBaseIn.posY,entityLivingBaseIn.posZ,entityLivingBaseIn.rotationYaw,entityLivingBaseIn.rotationPitch);
+                SilverfishEntity silverfish = new SilverfishEntity(EntityType.SILVERFISH, entityLivingBaseIn.getEntityWorld());
+                silverfish.setPositionAndRotation(entityLivingBaseIn.posX, entityLivingBaseIn.posY, entityLivingBaseIn.posZ, entityLivingBaseIn.rotationYaw, entityLivingBaseIn.rotationPitch);
 
                 entityLivingBaseIn.getEntityWorld().addEntity(silverfish);
 
@@ -53,13 +51,12 @@ public class Infestation extends EffectBase {
     }
 
 
-
     @Override
     public List<ItemStack> getCurativeItems() {
 
         ArrayList<ItemStack> cures = new ArrayList<>();
         cures.add(new ItemStack(Items.MILK_BUCKET));
 
-        return  cures;
+        return cures;
     }
 }

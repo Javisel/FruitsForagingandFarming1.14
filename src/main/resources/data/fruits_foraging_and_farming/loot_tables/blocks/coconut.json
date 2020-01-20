@@ -12,22 +12,22 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "minecraft:coconut",
+                  "block": "fruits_foraging_and_farming:coconut",
                   "properties": {
-                    "age": "2",
-                    "age": "3",
-                    "age": "4"
+                    "state": "2",
+                    "state": "3",
+                    "state": "4"
 
                   }
                 }
               ],
-              "count": 3
+              "count": 1
             },
             {
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "minecraft:coconut"
+          "name": "fruits_foraging_and_farming:coconut"
         }
       ]
     }

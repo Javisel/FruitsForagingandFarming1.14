@@ -5,17 +5,13 @@ import com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistra
 import com.teamcitrus.fruitsforagingandfarming.common.registration.EntityTypeRegistration;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.ItemRegistration;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -26,49 +22,81 @@ public class FFFBoat extends BoatEntity {
 
 
     public FFFBoat(World worldIn, double x, double y, double z) {
-        super((EntityType<? extends BoatEntity>) EntityTypeRegistration.FFF_BOAT,worldIn);
+        super((EntityType<? extends BoatEntity>) EntityTypeRegistration.FFF_BOAT, worldIn);
         setPositionAndUpdate(x, y, z);
     }
 
 
     public FFFBoat(EntityType<BoatEntity> boatEntityEntityType, World world) {
-        super(boatEntityEntityType ,world);
+        super(boatEntityEntityType, world);
 
     }
 
     public FFFBoat(FMLPlayMessages.SpawnEntity spawnEntity, World world) {
-        super((EntityType<? extends BoatEntity>) EntityTypeRegistration.FFF_BOAT,world);
+        super((EntityType<? extends BoatEntity>) EntityTypeRegistration.FFF_BOAT, world);
 
 
     }
+
     @Override
     protected void registerData() {
-            super.registerData();
+        super.registerData();
         this.dataManager.register(FFF_BOAT_TYPE, BoatEntity.Type.OAK.ordinal());
 
     }
 
 
     @Override
-    public IPacket<?> createSpawnPacket()
-    {
+    public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
+    public FFFBoat.FFFType getFFFBoatType() {
+        return FFFBoat.FFFType.byId(this.dataManager.get(FFF_BOAT_TYPE));
+    }
 
+    public Item getItemBoat() {
+        switch (this.getFFFBoatType()) {
+            case PALM:
+            default:
+                return ItemRegistration.PALM_BOAT;
 
+        }
+    }
 
-
-
-    public static enum FFFType {
+    public enum FFFType {
         PALM(BlockRegistration.PALM_PLANKS, "palm");
 
         private final String name;
         private final Block block;
 
-        private FFFType(Block p_i48146_3_, String p_i48146_4_) {
+        FFFType(Block p_i48146_3_, String p_i48146_4_) {
             this.name = p_i48146_4_;
             this.block = p_i48146_3_;
+        }
+
+        /**
+         * Get a boat type by it's enum ordinal
+         */
+        public static FFFBoat.FFFType byId(int id) {
+            FFFBoat.FFFType[] aboatentity$type = values();
+            if (id < 0 || id >= aboatentity$type.length) {
+                id = 0;
+            }
+
+            return aboatentity$type[id];
+        }
+
+        public static FFFBoat.FFFType getTypeFromString(String nameIn) {
+            FFFBoat.FFFType[] aboatentity$type = values();
+
+            for (int i = 0; i < aboatentity$type.length; ++i) {
+                if (aboatentity$type[i].getName().equals(nameIn)) {
+                    return aboatentity$type[i];
+                }
+            }
+
+            return aboatentity$type[0];
         }
 
         public String getName() {
@@ -81,42 +109,6 @@ public class FFFBoat extends BoatEntity {
 
         public String toString() {
             return this.name;
-        }
-
-        /**
-         * Get a boat type by it's enum ordinal
-         */
-        public static  FFFBoat.FFFType byId(int id) {
-            FFFBoat.FFFType[] aboatentity$type = values();
-            if (id < 0 || id >= aboatentity$type.length) {
-                id = 0;
-            }
-
-            return aboatentity$type[id];
-        }
-
-        public static  FFFBoat.FFFType getTypeFromString(String nameIn) {
-            FFFBoat.FFFType[] aboatentity$type = values();
-
-            for(int i = 0; i < aboatentity$type.length; ++i) {
-                if (aboatentity$type[i].getName().equals(nameIn)) {
-                    return aboatentity$type[i];
-                }
-            }
-
-            return aboatentity$type[0];
-        }
-    }
-
-    public FFFBoat.FFFType getFFFBoatType() {
-        return FFFBoat.FFFType.byId(this.dataManager.get(FFF_BOAT_TYPE));
-    }
-    public Item getItemBoat() {
-        switch(this.getFFFBoatType()) {
-            case PALM:
-            default:
-                return ItemRegistration.PALM_BOAT;
-
         }
     }
 

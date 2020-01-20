@@ -9,14 +9,12 @@ import java.nio.file.Path;
 
 public class ConfigSetup {
 
-    private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SERVER;
-
-    private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CLIENT;
+    private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
+    private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
 
-    static
-    {
+    static {
         Config.init(SERVER_BUILDER);
         SERVER = SERVER_BUILDER.build();
         ClientConfig.init(CLIENT_BUILDER);
@@ -37,7 +35,6 @@ public class ConfigSetup {
         configData.load();
         spec.setConfig(configData);
     }
-
 
 
 }
