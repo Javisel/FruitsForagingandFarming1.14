@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Config {
 
+    private static ArrayList<FoodData> foodDataList = new ArrayList<>();
+
     public static FoodData AVOCADO = new FoodData("avocado", 3, .6);
     public static FoodData BANANA = new FoodData("banana", 2, .21);
     public static FoodData BLUEBERRY = new FoodData("blueberry", 1, 0.125);
@@ -29,7 +31,6 @@ public class Config {
     public static FoodData PINEAPPLE = new FoodData("pineapple", 3, .5);
     public static FoodData PLUM = new FoodData("plum", 1, 0.5);
     public static FoodData TURNIP = new FoodData("turnip", 1, .5);
-    private static List<FoodData> foodDataList = new ArrayList<>();
 
     public static void init(ForgeConfigSpec.Builder server) {
 
@@ -61,7 +62,7 @@ public class Config {
             this.name = name;
             defaultshanksRestored = defaultShanks;
             this.defaultSaturation = defaultSaturation;
-            foodDataList.add(this);
+                    foodDataList.add(this);
         }
 
         public float getSaturation() {

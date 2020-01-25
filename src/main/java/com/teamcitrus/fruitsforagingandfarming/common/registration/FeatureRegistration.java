@@ -17,14 +17,19 @@ public class FeatureRegistration {
 
     public static Feature PALM_TREE = null;
     public static Feature BANANA_TREE = null;
+    public static Feature LEMON_TREE = null;
 
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Feature<?>> event) {
-        System.out.println("FEATURE!");
         event.getRegistry().registerAll
                 (
                         PALM_TREE = new PalmTreeFeature(NoFeatureConfig::deserialize, false),
-                        BANANA_TREE = new FruitTreeFeature(NoFeatureConfig::deserialize, true, (HangingFruit) BlockRegistration.BANANA_FRUIT)
+                        BANANA_TREE = new FruitTreeFeature(NoFeatureConfig::deserialize, true, (HangingFruit) BlockRegistration.BANANA_FRUIT),
+                      LEMON_TREE = new FruitTreeFeature(NoFeatureConfig::deserialize, true, (HangingFruit) BlockRegistration.LEMON_FRUIT)
+
+
+
+
                 );
     }
 

@@ -4,6 +4,7 @@ import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
 import com.teamcitrus.fruitsforagingandfarming.common.block.*;
 import com.teamcitrus.fruitsforagingandfarming.common.item.ItemBlockBase;
 import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.BananaTree;
+import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.LemonTree;
 import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.PalmTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -64,6 +65,14 @@ public class BlockRegistration {
     public static Block BANANA_FRUIT = null;
     public static Block BANANA_SAPLING = null;
 
+    public static Block LEMON_FRUIT = null;
+    public static Block LEMON_SAPLING = null;
+
+    //CROP
+    public static Block CORN_CROP_BOTTOM = null;
+    public static Block CORN_CROP_TOP = null;
+
+
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll
@@ -73,11 +82,11 @@ public class BlockRegistration {
 
                         STRIPPED_PALM_WOOD = new RotatedPillarBlockBase("stripped_palm_wood", WOOD_BLOCK_PROPERTY),
                         PALM_WOOD = new StripableBlock("palm_wood", (RotatedPillarBlock) STRIPPED_PALM_WOOD, WOOD_BLOCK_PROPERTY),
-
+                        BANANA_SAPLING = new SaplingBase("banana_sapling", new BananaTree(), SAPLING_PROPERTIES),
+                        LEMON_SAPLING = new SaplingBase("lemon_sapling", new LemonTree(), SAPLING_PROPERTIES),
                         PALM_PLANKS = new BlockBase("palm_planks", WOOD_BLOCK_PROPERTY),
                         PALM_LEAVES = new LeavesBlockBase("palm_leaves", Block.Properties.create(Material.LEAVES, MaterialColor.GREEN)),
                         PALM_SAPLING = new SaplingBase("palm_sapling", new PalmTree(), SAPLING_PROPERTIES),
-                        BANANA_SAPLING = new SaplingBase("banana_sapling", new BananaTree(), SAPLING_PROPERTIES),
                         PALM_STAIRS = new StairsBase("palm_stairs", BlockRegistration.PALM_PLANKS.getDefaultState(), WOOD_BLOCK_PROPERTY),
                         PALM_SLAB = new SlabBase("palm_slab", WOOD_BLOCK_PROPERTY),
                         PALM_BUTTON = new ButtonBase("palm_button", WOOD_BLOCK_PROPERTY),
@@ -102,7 +111,10 @@ public class BlockRegistration {
                         SMOOTH_BLACK_SANDSTONE_STAIRS = new StairsBase("smooth_black_sandstone_stairs", BlockRegistration.SMOOTH_BLACK_SANDSTONE.getDefaultState(), SANDSTONE_PROPERTIES),
                         ACTIVATED_BLACK_SANDSTONE = new BlockBase("activated_black_sandstone", SANDSTONE_PROPERTIES),
                         BLACK_SANDSTONE_WALL = new WallBase("black_sandstone_wall", SANDSTONE_PROPERTIES),
-                        BANANA_FRUIT = new HangingFruit("banana_fruit")
+                        BANANA_FRUIT = new HangingFruit("banana_fruit"),
+                        LEMON_FRUIT = new HangingFruit("lemon_fruit"),
+                        CORN_CROP_BOTTOM = new CornCropBottom(),
+                        CORN_CROP_TOP = new CornCropTop()
 
                 );
     }
@@ -121,6 +133,8 @@ public class BlockRegistration {
                         new ItemBlockBase(PALM_LEAVES, new Item.Properties()),
                         new ItemBlockBase(PALM_SAPLING, new Item.Properties()),
                         new ItemBlockBase(BANANA_SAPLING, new Item.Properties()),
+                        new ItemBlockBase(LEMON_SAPLING, new Item.Properties()),
+
                         new ItemBlockBase(PALM_SLAB, new Item.Properties()),
                         new ItemBlockBase(PALM_STAIRS, new Item.Properties()),
                         new ItemBlockBase(PALM_BUTTON, new Item.Properties()),

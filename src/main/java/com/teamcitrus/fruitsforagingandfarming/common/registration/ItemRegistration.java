@@ -3,10 +3,9 @@ package com.teamcitrus.fruitsforagingandfarming.common.registration;
 
 import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
 import com.teamcitrus.fruitsforagingandfarming.common.config.Config;
-import com.teamcitrus.fruitsforagingandfarming.common.item.InfestedEggs;
-import com.teamcitrus.fruitsforagingandfarming.common.item.ItemBase;
-import com.teamcitrus.fruitsforagingandfarming.common.item.PalmBoatItem;
-import com.teamcitrus.fruitsforagingandfarming.common.item.ScytheItem;
+import com.teamcitrus.fruitsforagingandfarming.common.item.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
 import net.minecraftforge.event.RegistryEvent;
@@ -86,8 +85,10 @@ public class ItemRegistration {
                         STONE_SCYTHE = new ScytheItem("stone_scythe", ItemTier.STONE, -3),
                         GOLD_SCYTHE = new ScytheItem("golden_scythe", ItemTier.GOLD, -3),
                         IRON_SCYTHE = new ScytheItem("iron_scythe", ItemTier.IRON, -3),
-                        DIAMOND_SCYTHE = new ScytheItem("diamond_scythe", ItemTier.DIAMOND, -3)
+                        DIAMOND_SCYTHE = new ScytheItem("diamond_scythe", ItemTier.DIAMOND, -3),
 
+                        //SEEDS
+                        CORN_KERNEL = new SeedBase("corn_kernel",BlockRegistration.CORN_CROP_BOTTOM, new Item.Properties())
 
                 );
     }

@@ -5,6 +5,7 @@ import com.teamcitrus.fruitsforagingandfarming.common.block.HangingFruit;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.IWorldGenerationReader;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
@@ -21,8 +22,9 @@ public class FruitTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
 
     public FruitTreeFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configIn, boolean doBlockNotifyIn, HangingFruit fruit) {
         super(configIn, doBlockNotifyIn);
-        setRegistryName(fruit.getRegistryName().getNamespace() + "_fruit_tree");
+        setRegistryName(fruit.getRegistryName().getPath() + "_fruit_tree");
         FRUIT = fruit.getStateWithMeta(2);
+        System.out.println(this.getRegistryName().toString());
     }
 
     @Override
@@ -79,6 +81,29 @@ public class FruitTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
 
         this.setLogState(changedBlocks, worldIn, top.south(2).east(2), LEAF, mutableBoundingBox);
         this.setLogState(changedBlocks, worldIn, top.south(2).west(2), LEAF, mutableBoundingBox);
+
+
+            for (int x =-5; x <5; x++) {
+
+                for (int y =-5; y <5; y++) {
+
+
+                    for (int z = -5; z < 5; z++) {
+
+                        if (isLeaves(worldIn, top.add(x, y, z)) && isAir(worldIn,top.add(x,y-1,z)) && MathHelper.nextInt(rand,0,100) <=30) {
+
+                            this.setLogState(changedBlocks,worldIn,top.add(x,y-1,z),FRUIT.with(HangingFruit.age,2),mutableBoundingBox);
+
+
+
+                        }
+
+
+                    }
+                }
+            }
+
+
 
 
         return true;
