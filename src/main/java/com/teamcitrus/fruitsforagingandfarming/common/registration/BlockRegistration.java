@@ -25,7 +25,7 @@ public class BlockRegistration {
 
     private static final Block.Properties SANDSTONE_PROPERTIES = Block.Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(0.8F);
     private static final Block.Properties SAPLING_PROPERTIES = Block.Properties.create(Material.PLANTS, MaterialColor.GREEN).sound(SoundType.PLANT);
-
+    private static final Block.Properties CROP_PROPERTY = Block.Properties.create(Material.PLANTS,MaterialColor.GREEN).doesNotBlockMovement().sound(SoundType.CROP).tickRandomly();
     public static Block PALM_LOG = null;
     public static Block STRIPPED_PALM_LOG = null;
     public static Block PALM_WOOD = null;
@@ -70,7 +70,9 @@ public class BlockRegistration {
 
     //CROP
     public static Block CORN_CROP_BOTTOM = null;
-    public static Block CORN_CROP_TOP = null;
+    public static CornCropTop CORN_CROP_TOP = null;
+
+    public static Block TURNIP_CROP = null;
 
 
     @SubscribeEvent
@@ -114,7 +116,8 @@ public class BlockRegistration {
                         BANANA_FRUIT = new HangingFruit("banana_fruit"),
                         LEMON_FRUIT = new HangingFruit("lemon_fruit"),
                         CORN_CROP_BOTTOM = new CornCropBottom(),
-                        CORN_CROP_TOP = new CornCropTop()
+                        CORN_CROP_TOP = new CornCropTop(),
+                        TURNIP_CROP = new CropsBase("turnip_crop",CROP_PROPERTY)
 
                 );
     }

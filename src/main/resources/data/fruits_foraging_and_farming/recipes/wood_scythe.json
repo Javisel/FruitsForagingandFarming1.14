@@ -11,8 +11,7 @@
     },
     "I": [
       {
-        "type": "forge:ore_dict",
-        "ore": "plankWood"
+        "tag": "minecraft:planks"
       }
     ]
   },

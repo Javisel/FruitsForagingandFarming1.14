@@ -4,7 +4,9 @@ import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.FallingBlockEntity;
+import net.minecraft.entity.monster.RavagerEntity;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
@@ -41,6 +43,8 @@ public class CornCropBottom extends BushBlock implements IGrowable {
         return state.getBlock() == Blocks.FARMLAND;
     }
 
+
+
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return CORN_CROP_SHAPE[getAge(state)];
@@ -72,6 +76,24 @@ public class CornCropBottom extends BushBlock implements IGrowable {
 
                     if (worldIn.isAirBlock(pos.up())) {
                         worldIn.setBlockState(pos.up(), BlockRegistration.CORN_CROP_TOP.getDefaultState().with(CornCropTop.age,0));
+
+
+                    }
+                    else {
+
+                        if (worldIn.getBlockState(pos.up()).getBlock()!=BlockRegistration.CORN_CROP_TOP && !worldIn.isAirBlock(pos.up())) {
+                            worldIn.destroyBlock(pos,false);
+                                System.out.println("INVALID HIGHER BLOCK!");
+                        } else {
+
+                            if (BlockRegistration.CORN_CROP_TOP.getAge(worldIn.getBlockState(pos.up())) < BlockRegistration.CORN_CROP_TOP.getMaxAge()) {
+
+                                worldIn.setBlockState(pos.up(),BlockRegistration.CORN_CROP_TOP.withAge(BlockRegistration.CORN_CROP_TOP.getAge(worldIn.getBlockState(pos.up()))+1));
+
+
+                            }
+
+                        }
 
 
                     }
@@ -161,11 +183,14 @@ public class CornCropBottom extends BushBlock implements IGrowable {
      */
     @Override
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return  worldIn.getBlockState(pos.up()).isAir(worldIn,pos.up()) &&  getAge(state) < 2;
+        return  worldIn.getBlockState(pos.up()) != BlockRegistration.CORN_CROP_TOP.withAge(BlockRegistration.CORN_CROP_TOP.getMaxAge());
+
     }
 
     @Override
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+
+
         return canGrow(worldIn,pos,state,worldIn.isRemote());
     }
     protected int getBonemealAgeIncrease(World worldIn) {
@@ -201,5 +226,11 @@ public class CornCropBottom extends BushBlock implements IGrowable {
     public BlockState withAge(int age) {
         return this.getDefaultState().with(this.age, age);
     }
+    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+        if (entityIn instanceof RavagerEntity && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(worldIn, entityIn)) {
+            worldIn.destroyBlock(pos, true);
+        }
 
+        super.onEntityCollision(state, worldIn, pos, entityIn);
+    }
 }

@@ -88,8 +88,8 @@ public class ItemRegistration {
                         DIAMOND_SCYTHE = new ScytheItem("diamond_scythe", ItemTier.DIAMOND, -3),
 
                         //SEEDS
-                        CORN_KERNEL = new SeedBase("corn_kernel",BlockRegistration.CORN_CROP_BOTTOM, new Item.Properties())
-
+                        CORN_KERNEL = new SeedBase("corn_kernel",BlockRegistration.CORN_CROP_BOTTOM, new Item.Properties()),
+                        TURNIP_SEEDS = new SeedBase("turnip_seeds",BlockRegistration.TURNIP_CROP,new Item.Properties())
                 );
     }
 

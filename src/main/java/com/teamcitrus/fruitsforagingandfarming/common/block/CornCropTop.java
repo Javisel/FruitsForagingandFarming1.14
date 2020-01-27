@@ -45,6 +45,15 @@ public class CornCropTop extends BushBlock implements IPlantable, IGrowable {
         return CORN_CROP_SHAPE[getAge(state)];
     }
 
+    @Override
+    public void neighborChanged(BlockState p_220069_1_, World p_220069_2_, BlockPos p_220069_3_, Block p_220069_4_, BlockPos p_220069_5_, boolean p_220069_6_) {
+        super.neighborChanged(p_220069_1_, p_220069_2_, p_220069_3_, p_220069_4_, p_220069_5_, p_220069_6_);
+        if (!isValidGround(p_220069_1_,p_220069_2_,p_220069_3_)){
+
+            p_220069_2_.destroyBlock(p_220069_3_,false);
+
+        }
+    }
 
     public boolean isMaxAge(BlockState state){
 
@@ -55,37 +64,7 @@ public class CornCropTop extends BushBlock implements IPlantable, IGrowable {
 
 
 
-    @Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
 
-        if (!worldIn.isAreaLoaded(pos, 1)) return;
-        if (worldIn.getNeighborAwareLightSubtracted(pos.up(),0) >= 8) {
-            int i = this.getAge(state);
-
-
-            float f = getGrowthChance(this, worldIn, pos);
-
-            if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
-                if (isMaxAge(state)) {
-
-                    if (worldIn.isAirBlock(pos.up())) {
-                        //worldIn.setBlockState(pos.up(), BlockRegistration.CORN_CROP_TOP.getDefaultState().withProperty(CropCornTop.AGE,0));
-
-
-                    }
-                } else if (i< 2) {
-                    worldIn.setBlockState(pos, this.withAge(i + 1), 2);
-                } else {
-
-                }
-                net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, worldIn.getBlockState(pos));
-            }
-
-        }
-
-
-
-    }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(age);
@@ -95,56 +74,10 @@ public class CornCropTop extends BushBlock implements IPlantable, IGrowable {
 
 
     public int getAge(BlockState state) {
-        return state.get(BlockCoconut.state);
+        return state.get(this.age);
     }
 
 
-
-
-    protected static float getGrowthChance(Block blockIn, World worldIn, BlockPos pos) {
-        float f = 1.0F;
-        BlockPos blockpos = pos.down();
-
-
-        for (int i = -1; i <= 1; ++i) {
-            for (int j = -1; j <= 1; ++j) {
-                float f1 = 0.0F;
-                BlockState iblockstate = worldIn.getBlockState(blockpos.add(i, 0, j));
-
-                if (iblockstate.getBlock().canSustainPlant(iblockstate, worldIn, blockpos.add(i, 0, j), Direction.UP, (net.minecraftforge.common.IPlantable) blockIn)) {
-                    f1 = 1.0F;
-
-                    if (iblockstate.getBlock().isFertile(iblockstate,worldIn, blockpos.add(i, 0, j))) {
-                        f1 = 3.0F;
-                    }
-                }
-
-                if (i != 0 || j != 0) {
-                    f1 /= 4.0F;
-                }
-
-                f += f1;
-            }
-        }
-
-        BlockPos blockpos1 = pos.north();
-        BlockPos blockpos2 = pos.south();
-        BlockPos blockpos3 = pos.west();
-        BlockPos blockpos4 = pos.east();
-        boolean flag = blockIn == worldIn.getBlockState(blockpos3).getBlock() || blockIn == worldIn.getBlockState(blockpos4).getBlock();
-        boolean flag1 = blockIn == worldIn.getBlockState(blockpos1).getBlock() || blockIn == worldIn.getBlockState(blockpos2).getBlock();
-
-        if (flag && flag1) {
-            f /= 2.0F;
-        } else {
-            boolean flag2 = blockIn == worldIn.getBlockState(blockpos3.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos4.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos4.south()).getBlock() || blockIn == worldIn.getBlockState(blockpos3.south()).getBlock();
-
-            if (flag2) {
-                f /= 2.0F;
-            }
-        }
-        return f;
-    }
 
 
 

@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "fruits_foraging_and_farming:corn"
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.5714286
+              }
+            }
+          ],
+          "name": "fruits_foraging_and_farming:corn"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "fruits_foraging_and_farming:corn_crop_top",
+          "properties": {
+            "age": "1",
+            "age": "2"
+
+          }
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ]
+}
