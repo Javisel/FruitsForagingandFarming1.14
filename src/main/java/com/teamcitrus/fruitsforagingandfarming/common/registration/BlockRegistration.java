@@ -2,7 +2,9 @@ package com.teamcitrus.fruitsforagingandfarming.common.registration;
 
 import com.teamcitrus.fruitsforagingandfarming.FruitsForagingAndFarming;
 import com.teamcitrus.fruitsforagingandfarming.common.block.*;
+import com.teamcitrus.fruitsforagingandfarming.common.config.Config;
 import com.teamcitrus.fruitsforagingandfarming.common.item.ItemBlockBase;
+import com.teamcitrus.fruitsforagingandfarming.common.item.ItemCakeBlock;
 import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.BananaTree;
 import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.LemonTree;
 import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.PalmTree;
@@ -80,6 +82,10 @@ public class BlockRegistration {
     public static Block HONEYMELON_STEM = null;
     public static Block HONEYMELON_ATTACHED_STEM = null;
 
+
+    //MANUFACTURED FOOD - CAKE
+    public static Block CHOCOLATE_CAKE = null;
+
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll
@@ -125,7 +131,8 @@ public class BlockRegistration {
                         TURNIP_CROP = new CropsBase("turnip_crop",CROP_PROPERTY),
                         HONEYMELON_BLOCK = new HoneymelonBlock(),
                         HONEYMELON_STEM = new HoneymelonStem(),
-                        HONEYMELON_ATTACHED_STEM = new HoneymelonAttachedStem()
+                        HONEYMELON_ATTACHED_STEM = new HoneymelonAttachedStem(),
+                        CHOCOLATE_CAKE = new CakeBase("chocolate_cake", Config.CHOCOLATE_CAKE_SLICE.defaultshanksRestored,Config.CHOCOLATE_CAKE_SLICE.saturation.get().floatValue())
 
                 );
     }
@@ -169,7 +176,8 @@ public class BlockRegistration {
                         new ItemBlockBase(SMOOTH_BLACK_SANDSTONE_STAIRS, new Item.Properties()),
                         new ItemBlockBase(ACTIVATED_BLACK_SANDSTONE, new Item.Properties()),
                         new ItemBlockBase(BLACK_SANDSTONE_WALL, new Item.Properties()),
-                        new ItemBlockBase(HONEYMELON_BLOCK,new Item.Properties())
+                        new ItemBlockBase(HONEYMELON_BLOCK,new Item.Properties()),
+                        new ItemCakeBlock((CakeBase) CHOCOLATE_CAKE)
 
 
                 );

@@ -10,7 +10,7 @@ public class ClientConfig {
 
     public static void init(ForgeConfigSpec.Builder server) {
 
-        foodTooltip = server.comment("Should hovering over food display it's stats?").define("tooltip", true);
+        foodTooltip = server.comment("Should hovering over food display it's stats?").define("food_tooltip", true);
 
 
     }

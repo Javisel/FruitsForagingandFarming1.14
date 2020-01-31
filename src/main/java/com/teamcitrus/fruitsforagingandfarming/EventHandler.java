@@ -1,6 +1,7 @@
 package com.teamcitrus.fruitsforagingandfarming;
 
 import com.teamcitrus.fruitsforagingandfarming.client.config.ClientConfig;
+import com.teamcitrus.fruitsforagingandfarming.common.item.ItemCakeBlock;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.EffectRegistration;
 import net.minecraft.entity.EntityType;
@@ -20,24 +21,34 @@ public class EventHandler {
 
 
     @SubscribeEvent
-    public void foodToolTip(ItemTooltipEvent e) {
+    public void toolTip(ItemTooltipEvent e) {
 
-        if (e.getItemStack().isFood() && ClientConfig.foodTooltip.get()) {
+        if ( ClientConfig.foodTooltip.get()) {
 
-            e.getToolTip().add(new StringTextComponent(TextFormatting.GOLD + "Shanks: " + TextFormatting.GRAY + e.getItemStack().getItem().getFood().getHealing()));
-            e.getToolTip().add(new StringTextComponent(TextFormatting.GOLD + "Saturation: " + TextFormatting.GRAY + e.getItemStack().getItem().getFood().getSaturation()));
+            if (e.getItemStack().getItem().isFood()) {
+                e.getToolTip().add(new StringTextComponent(TextFormatting.GOLD + "Shanks: " + TextFormatting.GRAY + e.getItemStack().getItem().getFood().getHealing()));
+                e.getToolTip().add(new StringTextComponent(TextFormatting.GOLD + "Saturation: " + TextFormatting.GRAY + e.getItemStack().getItem().getFood().getSaturation()));
 
-
-            if (e.getEntityPlayer() != null && e.getEntityPlayer().getEntityWorld().isRemote) {
-
-                if (PatreonData.getContributedItem(e.getEntityPlayer().getUniqueID()) != null) {
-
-                    e.getToolTip().add(new StringTextComponent(TextFormatting.ITALIC + "Thank you for your contribution, " + e.getEntityPlayer().getName() + "!"));
-                }
             }
+            if (e.getItemStack().getItem() instanceof ItemCakeBlock) {
+
+                ItemCakeBlock cakeBlock = (ItemCakeBlock) e.getItemStack().getItem();
+                e.getToolTip().add(new StringTextComponent(TextFormatting.GOLD + "Shanks: " + TextFormatting.GRAY +cakeBlock.getFoodlevel()));
+                e.getToolTip().add(new StringTextComponent(TextFormatting.GOLD + "Saturation: " + TextFormatting.GRAY + cakeBlock.getSaturation()));
+
+            }
+
+
+
         }
 
+        if (e.getEntityPlayer() != null && e.getEntityPlayer().getEntityWorld().isRemote) {
 
+            if (PatreonData.getContributedItem(e.getEntityPlayer().getUniqueID()) ==e.getItemStack().getItem()) {
+
+                e.getToolTip().add(new StringTextComponent(TextFormatting.ITALIC + "Thank you for your contribution, " + e.getEntityPlayer().getName() + "!"));
+            }
+        }
     }
 
 

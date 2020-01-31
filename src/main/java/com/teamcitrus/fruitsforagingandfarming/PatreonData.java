@@ -12,6 +12,7 @@ public class PatreonData {
     public static HashMap<UUID, Item> patreonItem = new HashMap<>();
 
     static {
+        //KODA
         patreonItem.put(UUID.fromString("526ab88d-f353-4421-9d18-a629f735ac47"), ItemRegistration.KIWANO);
 
 
