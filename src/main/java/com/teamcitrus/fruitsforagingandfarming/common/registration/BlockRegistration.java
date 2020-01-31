@@ -72,8 +72,13 @@ public class BlockRegistration {
     public static Block CORN_CROP_BOTTOM = null;
     public static CornCropTop CORN_CROP_TOP = null;
 
+    //TURNIP
     public static Block TURNIP_CROP = null;
 
+    //HONEYMELON
+    public static Block HONEYMELON_BLOCK =null;
+    public static Block HONEYMELON_STEM = null;
+    public static Block HONEYMELON_ATTACHED_STEM = null;
 
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Block> event) {
@@ -117,7 +122,10 @@ public class BlockRegistration {
                         LEMON_FRUIT = new HangingFruit("lemon_fruit"),
                         CORN_CROP_BOTTOM = new CornCropBottom(),
                         CORN_CROP_TOP = new CornCropTop(),
-                        TURNIP_CROP = new CropsBase("turnip_crop",CROP_PROPERTY)
+                        TURNIP_CROP = new CropsBase("turnip_crop",CROP_PROPERTY),
+                        HONEYMELON_BLOCK = new HoneymelonBlock(),
+                        HONEYMELON_STEM = new HoneymelonStem(),
+                        HONEYMELON_ATTACHED_STEM = new HoneymelonAttachedStem()
 
                 );
     }
@@ -160,7 +168,8 @@ public class BlockRegistration {
                         new ItemBlockBase(SMOOTH_BLACK_SANDSTONE_SLAB, new Item.Properties()),
                         new ItemBlockBase(SMOOTH_BLACK_SANDSTONE_STAIRS, new Item.Properties()),
                         new ItemBlockBase(ACTIVATED_BLACK_SANDSTONE, new Item.Properties()),
-                        new ItemBlockBase(BLACK_SANDSTONE_WALL, new Item.Properties())
+                        new ItemBlockBase(BLACK_SANDSTONE_WALL, new Item.Properties()),
+                        new ItemBlockBase(HONEYMELON_BLOCK,new Item.Properties())
 
 
                 );

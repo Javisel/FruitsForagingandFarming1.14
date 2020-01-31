@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=west": { "model": "fruits_foraging_and_farming:block/honeymelon_stem_connected" },
+    "facing=east": { "model": "fruits_foraging_and_farming:block/honeymelon_stem_connected", "y": 180 },
+    "facing=north": { "model": "fruits_foraging_and_farming:block/honeymelon_stem_connected", "y": 90 },
+    "facing=south": { "model": "fruits_foraging_and_farming:block/honeymelon_stem_connected", "y": 270 }
+  }
+}

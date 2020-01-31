@@ -45,15 +45,7 @@ public class CornCropTop extends BushBlock implements IPlantable, IGrowable {
         return CORN_CROP_SHAPE[getAge(state)];
     }
 
-    @Override
-    public void neighborChanged(BlockState p_220069_1_, World p_220069_2_, BlockPos p_220069_3_, Block p_220069_4_, BlockPos p_220069_5_, boolean p_220069_6_) {
-        super.neighborChanged(p_220069_1_, p_220069_2_, p_220069_3_, p_220069_4_, p_220069_5_, p_220069_6_);
-        if (!isValidGround(p_220069_1_,p_220069_2_,p_220069_3_)){
 
-            p_220069_2_.destroyBlock(p_220069_3_,false);
-
-        }
-    }
 
     public boolean isMaxAge(BlockState state){
 

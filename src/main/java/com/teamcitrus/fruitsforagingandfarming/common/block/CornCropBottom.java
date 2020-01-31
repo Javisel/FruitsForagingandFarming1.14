@@ -81,10 +81,7 @@ public class CornCropBottom extends BushBlock implements IGrowable {
                     }
                     else {
 
-                        if (worldIn.getBlockState(pos.up()).getBlock()!=BlockRegistration.CORN_CROP_TOP && !worldIn.isAirBlock(pos.up())) {
-                            worldIn.destroyBlock(pos,false);
-                                System.out.println("INVALID HIGHER BLOCK!");
-                        } else {
+                        if (worldIn.getBlockState(pos.up()).getBlock()==BlockRegistration.CORN_CROP_TOP){
 
                             if (BlockRegistration.CORN_CROP_TOP.getAge(worldIn.getBlockState(pos.up())) < BlockRegistration.CORN_CROP_TOP.getMaxAge()) {
 

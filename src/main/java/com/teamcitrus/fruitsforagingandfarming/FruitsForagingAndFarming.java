@@ -3,6 +3,7 @@ package com.teamcitrus.fruitsforagingandfarming;
 import com.teamcitrus.fruitsforagingandfarming.client.RenderRegistration;
 import com.teamcitrus.fruitsforagingandfarming.common.FruitsForagingAndFarmingItemGroup;
 import com.teamcitrus.fruitsforagingandfarming.common.config.ConfigSetup;
+import com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
@@ -31,6 +32,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
+import static com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration.HONEYMELON_ATTACHED_STEM;
 import static com.teamcitrus.fruitsforagingandfarming.common.registration.BlockRegistration.PALM_LEAVES;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -75,7 +77,7 @@ public class FruitsForagingAndFarming {
         ItemColors itemColors = Minecraft.getInstance().getItemColors();
         blockColors.register((state, world, pos, tintIndex) ->
                         world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefault(),
-                PALM_LEAVES);
+                PALM_LEAVES, BlockRegistration.HONEYMELON_STEM, HONEYMELON_ATTACHED_STEM);
 
         itemColors.register((stack, tintIndex) -> {
                     BlockState BlockState = ((BlockItem) stack.getItem()).getBlock().getDefaultState();

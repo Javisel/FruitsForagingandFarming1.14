@@ -1,19 +1,19 @@
 {
   "variants": {
     "rotation=0": {
-      "model": "fruits_foraging_and_farming:honeymelon_block_standing"
+      "model": "fruits_foraging_and_farming:block/honeymelon_block_standing"
     },
     "rotation=3": {
-      "model": "fruits_foraging_and_farming:honeymelon_block_north"
+      "model": "fruits_foraging_and_farming:block/honeymelon_block_north"
     },
     "rotation=4": {
-      "model": "fruits_foraging_and_farming:honeymelon_block_east"
+      "model": "fruits_foraging_and_farming:block/honeymelon_block_east"
     },
     "rotation=1": {
-      "model": "fruits_foraging_and_farming:honeymelon_block_south"
+      "model": "fruits_foraging_and_farming:block/honeymelon_block_south"
     },
     "rotation=2": {
-      "model": "fruits_foraging_and_farming:honeymelon_block_west"
+      "model": "fruits_foraging_and_farming:block/honeymelon_block_west"
     }
   }
 }
