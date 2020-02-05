@@ -90,7 +90,8 @@ public class ItemRegistration {
                         //SEEDS
                         CORN_KERNEL = new SeedBase("corn_kernel",BlockRegistration.CORN_CROP_BOTTOM, new Item.Properties()),
                         TURNIP_SEEDS = new SeedBase("turnip_seeds",BlockRegistration.TURNIP_CROP,new Item.Properties()),
-                        HONEYMELON_SEEDS = new SeedBase("honeymelon_seeds",BlockRegistration.HONEYMELON_STEM,new Item.Properties())
+                        HONEYMELON_SEEDS = new SeedBase("honeymelon_seeds",BlockRegistration.HONEYMELON_STEM,new Item.Properties()),
+                        GRASS_SEEDS = new GrassSeeds()
                 );
     }
 
