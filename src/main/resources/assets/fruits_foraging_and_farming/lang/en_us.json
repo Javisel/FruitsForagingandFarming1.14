@@ -3,7 +3,6 @@
   "enchantment.lifesteal": "Lifesteal",
   "effect.fruits_foraging_and_farming.infestation": "Infestation",
   "enchantment.void": "Void",
-  "entity.golden_chicken": "Golden Chicken",
   "entity.coconut_crab": "Coconut Crab",
   "item.fruits_foraging_and_farming.avocado": "Avocado",
   "item.fruits_foraging_and_farming.banana": "Banana",
@@ -59,7 +58,8 @@
   "block.fruits_foraging_and_farming.palm_sapling": "Palm Sapling",
   "block.fruits_foraging_and_farming.banana_sapling": "Banana Sapling",
   "block.fruits_foraging_and_farming.lemon_sapling": "Lemon Sapling",
-
+  "block.fruits_foraging_and_farming.avocado_sapling": "Avocado Sapling",
+  "block.fruits_foraging_and_farming.pear_sapling": "Pear Sapling",
   "block.fruits_foraging_and_farming.coconut": "Coconut",
   "block.fruits_foraging_and_farming.honeymelon_block": "Honeymelon Block",
   "block.fruits_foraging_and_farming.banana_bunch": "Banana Bunch",

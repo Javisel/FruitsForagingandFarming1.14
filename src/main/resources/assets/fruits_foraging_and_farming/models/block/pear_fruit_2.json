@@ -1,0 +1,48 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "fruits_foraging_and_farming:block/pear_fruit_2",
+		"particle": "fruits_foraging_and_farming:block/pear_fruit_2"
+	},
+	"elements": [
+		{
+			"from": [6, 6, 6],
+			"to": [10, 11, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 4, 5], "texture": "#0"},
+				"east": {"uv": [12, 0, 16, 5], "texture": "#0"},
+				"south": {"uv": [4, 0, 8, 5], "texture": "#0"},
+				"west": {"uv": [8, 0, 12, 5], "texture": "#0"},
+				"up": {"uv": [0, 5, 4, 9], "texture": "#0"},
+				"down": {"uv": [4, 5, 8, 9], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7, 11, 7],
+			"to": [9, 13, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [10, 5, 12, 7], "texture": "#0"},
+				"east": {"uv": [14, 5, 16, 7], "texture": "#0"},
+				"south": {"uv": [12, 5, 14, 7], "texture": "#0"},
+				"west": {"uv": [8, 5, 10, 7], "texture": "#0"},
+				"up": {"uv": [8, 7, 10, 9], "texture": "#0"},
+				"down": {"uv": [10, 7, 12, 9], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, 13, 8],
+			"to": [9, 16, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [0, 9, 4, 12], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 3], "texture": "#0"},
+				"south": {"uv": [4, 9, 8, 12], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 3], "texture": "#0"},
+				"up": {"uv": [0, 0, 4, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 4, 0], "texture": "#0"}
+			}
+		}
+	]
+}

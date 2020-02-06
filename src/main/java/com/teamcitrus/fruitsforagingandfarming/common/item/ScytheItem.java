@@ -123,7 +123,7 @@ public class ScytheItem extends TieredItem {
                         } else {
                             breakposfirst = pos;
                             breakpossecond = pos;
-                            System.out.println("Unrecognized Numerical: " + quantized);
+                            System.err.println("Unrecognized Numerical: " + quantized);
                         }
 
 

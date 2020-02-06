@@ -9,12 +9,9 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class LemonTree extends Tree {
-
-
+public class PearTree extends Tree {
     @Nullable
     protected AbstractTreeFeature<NoFeatureConfig> getTreeFeature(Random random) {
-        return new FruitTreeFeature(NoFeatureConfig::deserialize, true, (HangingFruit) BlockRegistration.LEMON_FRUIT);
+        return new FruitTreeFeature(NoFeatureConfig::deserialize, true, (HangingFruit) BlockRegistration.PEAR_FRUIT);
     }
-
 }

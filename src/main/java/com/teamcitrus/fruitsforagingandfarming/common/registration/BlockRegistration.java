@@ -5,9 +5,7 @@ import com.teamcitrus.fruitsforagingandfarming.common.block.*;
 import com.teamcitrus.fruitsforagingandfarming.common.config.Config;
 import com.teamcitrus.fruitsforagingandfarming.common.item.ItemBlockBase;
 import com.teamcitrus.fruitsforagingandfarming.common.item.ItemCakeBlock;
-import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.BananaTree;
-import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.LemonTree;
-import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.PalmTree;
+import com.teamcitrus.fruitsforagingandfarming.common.world.feature.tree.*;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -70,6 +68,17 @@ public class BlockRegistration {
     public static Block LEMON_FRUIT = null;
     public static Block LEMON_SAPLING = null;
 
+    //AVOCADO FRUIT
+    public static Block AVOCADO_FRUIT = null;
+    public static Block AVOCADO_SAPLING = null;
+
+    //PEAR FRUIT
+    public static Block PEAR_FRUIT = null;
+    public static Block PEAR_SAPLING = null;
+
+
+
+
     //CROP
     public static Block CORN_CROP_BOTTOM = null;
     public static CornCropTop CORN_CROP_TOP = null;
@@ -97,6 +106,8 @@ public class BlockRegistration {
                         PALM_WOOD = new StripableBlock("palm_wood", (RotatedPillarBlock) STRIPPED_PALM_WOOD, WOOD_BLOCK_PROPERTY),
                         BANANA_SAPLING = new SaplingBase("banana_sapling", new BananaTree(), SAPLING_PROPERTIES),
                         LEMON_SAPLING = new SaplingBase("lemon_sapling", new LemonTree(), SAPLING_PROPERTIES),
+                        AVOCADO_SAPLING = new SaplingBase("avocado_sapling",new AvocadoTree(),SAPLING_PROPERTIES),
+                        PEAR_SAPLING = new SaplingBase("pear_sapling",new PearTree(),SAPLING_PROPERTIES),
                         PALM_PLANKS = new BlockBase("palm_planks", WOOD_BLOCK_PROPERTY),
                         PALM_LEAVES = new LeavesBlockBase("palm_leaves", Block.Properties.create(Material.LEAVES, MaterialColor.GREEN)),
                         PALM_SAPLING = new SaplingBase("palm_sapling", new PalmTree(), SAPLING_PROPERTIES),
@@ -132,8 +143,9 @@ public class BlockRegistration {
                         HONEYMELON_BLOCK = new HoneymelonBlock(),
                         HONEYMELON_STEM = new HoneymelonStem(),
                         HONEYMELON_ATTACHED_STEM = new HoneymelonAttachedStem(),
-                        CHOCOLATE_CAKE = new CakeBase("chocolate_cake", Config.CHOCOLATE_CAKE_SLICE.defaultshanksRestored,Config.CHOCOLATE_CAKE_SLICE.saturation.get().floatValue())
-
+                        CHOCOLATE_CAKE = new CakeBase("chocolate_cake", Config.CHOCOLATE_CAKE_SLICE.defaultshanksRestored,Config.CHOCOLATE_CAKE_SLICE.saturation.get().floatValue()),
+                        AVOCADO_FRUIT = new HangingFruit("avocado_fruit"),
+                        PEAR_FRUIT = new HangingFruit("pear_fruit")
                 );
     }
 
@@ -151,6 +163,8 @@ public class BlockRegistration {
                         new ItemBlockBase(PALM_LEAVES, new Item.Properties()),
                         new ItemBlockBase(PALM_SAPLING, new Item.Properties()),
                         new ItemBlockBase(BANANA_SAPLING, new Item.Properties()),
+                        new ItemBlockBase(AVOCADO_SAPLING, new Item.Properties()),
+                        new ItemBlockBase(PEAR_SAPLING, new Item.Properties()),
                         new ItemBlockBase(LEMON_SAPLING, new Item.Properties()),
 
                         new ItemBlockBase(PALM_SLAB, new Item.Properties()),
