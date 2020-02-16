@@ -10,9 +10,13 @@ import net.minecraftforge.common.IPlantable;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BananaTree extends Tree {
+public class LimeTree extends Tree {
+
+
     @Nullable
     protected AbstractTreeFeature<NoFeatureConfig> getTreeFeature(Random random) {
-        return new FruitTreeFeature(NoFeatureConfig::deserialize, true, (HangingFruit) BlockRegistration.BANANA_FRUIT, (IPlantable) BlockRegistration.BANANA_SAPLING);
+        return new FruitTreeFeature(NoFeatureConfig::deserialize, true, (HangingFruit) BlockRegistration.LIME_FRUIT, (IPlantable) BlockRegistration.LIME_SAPLING);
     }
+
 }
+

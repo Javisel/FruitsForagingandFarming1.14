@@ -16,16 +16,15 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ObjectHolder;
 
+import static com.teamcitrus.fruitsforagingandfarming.common.registration.BlockProperties.*;
+
 @ObjectHolder(FruitsForagingAndFarming.MODID)
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class BlockRegistration {
+public class BlockRegistration{
 
-    private static final Block.Properties WOOD_BLOCK_PROPERTY = Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0F, 3.0F);
-    private static final Block.Properties WOOD_SIGN_PROPERTIES = Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0F, 3.0F).doesNotBlockMovement();
 
-    private static final Block.Properties SANDSTONE_PROPERTIES = Block.Properties.create(Material.ROCK, MaterialColor.BLACK).hardnessAndResistance(0.8F);
-    private static final Block.Properties SAPLING_PROPERTIES = Block.Properties.create(Material.PLANTS, MaterialColor.GREEN).sound(SoundType.PLANT);
-    private static final Block.Properties CROP_PROPERTY = Block.Properties.create(Material.PLANTS,MaterialColor.GREEN).doesNotBlockMovement().sound(SoundType.CROP).tickRandomly();
+
+
     public static Block PALM_LOG = null;
     public static Block STRIPPED_PALM_LOG = null;
     public static Block PALM_WOOD = null;
@@ -68,6 +67,9 @@ public class BlockRegistration {
     public static Block LEMON_FRUIT = null;
     public static Block LEMON_SAPLING = null;
 
+    public static Block LIME_FRUIT = null;
+    public static Block LIME_SAPLING = null;
+
     //AVOCADO FRUIT
     public static Block AVOCADO_FRUIT = null;
     public static Block AVOCADO_SAPLING = null;
@@ -100,8 +102,7 @@ public class BlockRegistration {
         event.getRegistry().registerAll
                 (
                         STRIPPED_PALM_LOG = new RotatedPillarBlockBase("stripped_palm_log", WOOD_BLOCK_PROPERTY),
-                        PALM_LOG = new StripableBlock("palm_log", (RotatedPillarBlock) STRIPPED_PALM_LOG, WOOD_BLOCK_PROPERTY),
-
+                        PALM_LOG = new PalmLog(),
                         STRIPPED_PALM_WOOD = new RotatedPillarBlockBase("stripped_palm_wood", WOOD_BLOCK_PROPERTY),
                         PALM_WOOD = new StripableBlock("palm_wood", (RotatedPillarBlock) STRIPPED_PALM_WOOD, WOOD_BLOCK_PROPERTY),
                         BANANA_SAPLING = new SaplingBase("banana_sapling", new BananaTree(), SAPLING_PROPERTIES),
@@ -117,8 +118,7 @@ public class BlockRegistration {
                         PALM_PRESSURE_PLATE = new PressurePlateBase("palm_pressure_plate", PressurePlateBlock.Sensitivity.EVERYTHING, WOOD_BLOCK_PROPERTY),
                         PALM_FENCE = new FenceBlockBase("palm_fence", WOOD_BLOCK_PROPERTY),
                         PALM_FENCE_GATE = new FenceGateBlockBase("palm_fence_gate", WOOD_BLOCK_PROPERTY),
-                       // PALM_SIGN = new StandingSignBase("palm_sign", WOOD_SIGN_PROPERTIES),
-                        //PALM_WALL_SIGN = new WallSignBase("palm_wall_sign", WOOD_SIGN_PROPERTIES),
+
                         PALM_DOOR = new DoorBase("palm_door", WOOD_BLOCK_PROPERTY),
                         PALM_TRAPDOOR = new TrapdoorBase("palm_trapdoor", WOOD_BLOCK_PROPERTY),
                         COCONUT = new BlockCoconut(),
@@ -145,7 +145,9 @@ public class BlockRegistration {
                         HONEYMELON_ATTACHED_STEM = new HoneymelonAttachedStem(),
                         CHOCOLATE_CAKE = new CakeBase("chocolate_cake", Config.CHOCOLATE_CAKE_SLICE.defaultshanksRestored,Config.CHOCOLATE_CAKE_SLICE.saturation.get().floatValue()),
                         AVOCADO_FRUIT = new HangingFruit("avocado_fruit"),
-                        PEAR_FRUIT = new HangingFruit("pear_fruit")
+                        PEAR_FRUIT = new HangingFruit("pear_fruit"),
+                        LIME_FRUIT = new HangingFruit("lime_fruit"),
+                        LIME_SAPLING = new SaplingBase("lime_sapling",new LimeTree(),SAPLING_PROPERTIES)
                 );
     }
 
@@ -166,7 +168,7 @@ public class BlockRegistration {
                         new ItemBlockBase(AVOCADO_SAPLING, new Item.Properties()),
                         new ItemBlockBase(PEAR_SAPLING, new Item.Properties()),
                         new ItemBlockBase(LEMON_SAPLING, new Item.Properties()),
-
+                        new ItemBlockBase(LIME_SAPLING,new Item.Properties()),
                         new ItemBlockBase(PALM_SLAB, new Item.Properties()),
                         new ItemBlockBase(PALM_STAIRS, new Item.Properties()),
                         new ItemBlockBase(PALM_BUTTON, new Item.Properties()),
