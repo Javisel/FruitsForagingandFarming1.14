@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 public class CoconutCrabRenderer extends LivingRenderer< CoconutCrabEntity,  CoconutCrabModel<CoconutCrabEntity>> {
     private static final ResourceLocation COCONUT_CRAB_TEXTURES = new ResourceLocation(FruitsForagingAndFarming.MODID + ":" + "textures/entity/coconut_crab.png");
 
-    public CoconutCrabRenderer(EntityRendererManager p_i50965_1_) {
-        super(p_i50965_1_, new CoconutCrabModel<>(), 1);
+    public CoconutCrabRenderer(EntityRendererManager rendererManager) {
+        super(rendererManager, new CoconutCrabModel<>(), 1);
     }
 
     @Nullable

@@ -20,15 +20,14 @@ public class EntityTypeRegistration {
 
     //EGGS
 
-    public static SpawnEggItem COCONUT_CRAB_SPAWN_EGG_=null;
+    public static Item COCONUT_CRAB_SPAWN_EGG = null;
 
 
     @SubscribeEvent
     public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
 
         FFF_BOAT = EntityType.Builder.<BoatEntity>create(FFFBoat::new, EntityClassification.MONSTER).setCustomClientFactory(FFFBoat::new).size(1.375F, 0.5625F).build(FruitsForagingAndFarming.MODID + ":fff_boat");
-        COCONUT_CRAB = EntityType.Builder.create(CoconutCrabEntity::new,EntityClassification.CREATURE).setCustomClientFactory(CoconutCrabEntity::new).size(1,0.4375F).build(FruitsForagingAndFarming.MODID+ ":coconut_crab");
-
+        COCONUT_CRAB = EntityType.Builder.create(CoconutCrabEntity::new, EntityClassification.CREATURE).size(.8f, 0.4375F).build(FruitsForagingAndFarming.MODID + ":coconut_crab");
 
 
         EntityTypeRegistration.FFF_BOAT.setRegistryName(FruitsForagingAndFarming.MODID, "fff_boat");
@@ -44,15 +43,18 @@ public class EntityTypeRegistration {
     public static void registerEggs(final RegistryEvent.Register<Item> event) {
 
         event.getRegistry().registerAll(
-                COCONUT_CRAB_SPAWN_EGG_ = (SpawnEggItem) new SpawnEggItem(COCONUT_CRAB,5,5,new Item.Properties()).setRegistryName(FruitsForagingAndFarming.MODID,"coconut_crab_spawn_egg")
 
+                COCONUT_CRAB_SPAWN_EGG = registerEntitySpawnEgg(COCONUT_CRAB, 3481637, 10503460, "coconut_crab_spawn_egg")
 
         );
 
 
-
-
-
-
     }
+
+    public static Item registerEntitySpawnEgg(EntityType<?> type, int color1, int color2, String name) {
+        SpawnEggItem item = new SpawnEggItem(type, color1, color2, new Item.Properties().group(FruitsForagingAndFarming.itemGroup));
+        item.setRegistryName(name);
+        return item;
+    }
+
 }

@@ -56,7 +56,7 @@ public class EventHandler {
     public void sliceCoconut(PlayerInteractEvent.LeftClickBlock e) {
 
 
-        if ((e.getItemStack().getItem() instanceof SwordItem || e.getItemStack().getItem() instanceof AxeItem) && e.getWorld().getBlockState(e.getPos()).getBlock() == BlockRegistration.COCONUT) {
+        if ((e.getItemStack().getItem() instanceof SwordItem || e.getItemStack().getItem() instanceof AxeItem) && e.getWorld().getBlockState(e.getPos()).getBlock() == BlockRegistration.COCONUT && e.getWorld().isAirBlock(e.getPos().down())) {
 
             e.getWorld().setBlockState(e.getPos(), BlockRegistration.SPLIT_COCONUT.getStateForPlacement(e.getWorld().getBlockState(e.getPos()), e.getFace(), e.getWorld().getBlockState(e.getPos()), e.getWorld(), e.getPos(), e.getPos(), null));
 

@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.Model;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -98,7 +99,7 @@ public class CoconutCrabModel<T extends CoconutCrabEntity> extends EntityModel<C
 
     @Override
     public void render(CoconutCrabEntity p_78088_1_, float p_78088_2_, float p_78088_3_, float p_78088_4_, float p_78088_5_, float p_78088_6_, float p_78088_7_) {
-        super.render(p_78088_1_, p_78088_2_, p_78088_3_, p_78088_4_, p_78088_5_, p_78088_6_, p_78088_7_);
+       this.body.render(p_78088_7_);
     }
 
     /**
@@ -108,6 +109,55 @@ public class CoconutCrabModel<T extends CoconutCrabEntity> extends EntityModel<C
         RendererModel.rotateAngleX = x;
         RendererModel.rotateAngleY = y;
         RendererModel.rotateAngleZ = z;
+
+    }
+
+    @Override
+    public void setLivingAnimations(CoconutCrabEntity p_212843_1_, float limbswing, float limbswingamount, float partialtick) {
+
+
+
+    }
+
+    @Override
+    public void setRotationAngles(CoconutCrabEntity crabEntity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
+
+        this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
+        this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
+
+
+        this.legRight3.rotateAngleZ = (-(float)Math.PI / 4F);
+        this.legLeft3.rotateAngleZ = ((float)Math.PI / 4F);
+        this.legRight2.rotateAngleZ = -0.58119464F;
+        this.legLeft2.rotateAngleZ = 0.58119464F;
+        this.legRight1.rotateAngleZ = (-(float)Math.PI / 4F);
+        this.legLeft1.rotateAngleZ = ((float)Math.PI / 4F);
+
+        this.legRight3.rotateAngleY = ((float)Math.PI / 4F);
+        this.legLeft3.rotateAngleY = (-(float)Math.PI / 4F);
+        this.legRight2.rotateAngleY = (-(float)Math.PI / 8F);
+        this.legLeft2.rotateAngleY = ((float)Math.PI / 8F);
+        this.legRight1.rotateAngleY = (-(float)Math.PI / 4F);
+        this.legLeft1.rotateAngleY = ((float)Math.PI / 4F);
+        float f3 = -(MathHelper.cos(limbSwing * 0.6662F * 2.0F + 0.0F) * 0.4F) * limbSwingAmount;
+        float f5 = -(MathHelper.cos(limbSwing * 0.6662F * 2.0F + ((float)Math.PI / 2F)) * 0.4F) * limbSwingAmount;
+        float f6 = -(MathHelper.cos(limbSwing * 0.6662F * 2.0F + ((float)Math.PI * 1.5F)) * 0.4F) * limbSwingAmount;
+        float f7 = Math.abs(MathHelper.sin(limbSwing * 0.6662F + 0.0F) * 0.4F) * limbSwingAmount;
+        float f9 = Math.abs(MathHelper.sin(limbSwing * 0.6662F + ((float)Math.PI / 2F)) * 0.4F) * limbSwingAmount;
+        float f10 = Math.abs(MathHelper.sin(limbSwing * 0.6662F + ((float)Math.PI * 1.5F)) * 0.4F) * limbSwingAmount;
+        this.legRight3.rotateAngleY += f3;
+        this.legLeft3.rotateAngleY += -f3;
+        this.legRight2.rotateAngleY += f5;
+        this.legLeft2.rotateAngleY += -f5;
+        this.legRight1.rotateAngleY += f6;
+        this.legLeft1.rotateAngleY += -f6;
+        this.legRight3.rotateAngleZ += f7;
+        this.legLeft3.rotateAngleZ += -f7;
+        this.legRight2.rotateAngleZ += f9;
+        this.legLeft2.rotateAngleZ += -f9;
+        this.legRight1.rotateAngleZ += f10;
+        this.legLeft1.rotateAngleZ += -f10;
+
     }
 }
 
