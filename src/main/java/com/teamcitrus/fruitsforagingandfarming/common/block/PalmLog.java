@@ -16,8 +16,9 @@ public class PalmLog extends StripableBlock {
         super("palm_log", (RotatedPillarBlock) STRIPPED_PALM_LOG,WOOD_BLOCK_PROPERTY);
     }
 
-    @Override
-    public void onBlockClicked(BlockState blockState, World world, BlockPos blockPos, PlayerEntity playerEntity) {
+
+
+    public void topple(World world, BlockPos blockPos, BlockState state) {
 
         if (!world.isRemote) {
 
@@ -48,5 +49,18 @@ public class PalmLog extends StripableBlock {
 
         }
 
+    }
+
+
+
+
+
+
+    @Override
+    public void onBlockClicked(BlockState blockState, World world, BlockPos blockPos, PlayerEntity playerEntity) {
+
+
+
+        topple(world,blockPos,blockState);
     }
 }

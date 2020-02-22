@@ -8,14 +8,15 @@ import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 
-public class HealthHuntergoal  <T extends LivingEntity>  extends NearestAttackableTargetGoal {
+public class WeakenedMobHunterGoal<T extends LivingEntity>  extends NearestAttackableTargetGoal {
 
 
-    float healthThreshold;
 
-    public HealthHuntergoal(CreatureEntity creatureEntity,Class<T> target,  double speedIn, boolean useLongMemory, float healthThreshold) {
+
+    public WeakenedMobHunterGoal(CreatureEntity creatureEntity, Class<T> target, boolean useLongMemory, float healthThreshold) {
         super( creatureEntity, target, useLongMemory);
-        this.healthThreshold=healthThreshold;
+
+        this.targetEntitySelector = new HealthPredicate(healthThreshold);
     }
 
 
