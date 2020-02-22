@@ -1,5 +1,6 @@
 package com.teamcitrus.fruitsforagingandfarming.common.entity;
 
+import com.teamcitrus.fruitsforagingandfarming.common.entity.crabai.CrackCoconutGoal;
 import com.teamcitrus.fruitsforagingandfarming.common.entity.crabai.WeakenedMobHunterGoal;
 import com.teamcitrus.fruitsforagingandfarming.common.entity.crabai.NocturnalGoal;
 import com.teamcitrus.fruitsforagingandfarming.common.registration.EntityTypeRegistration;
@@ -18,16 +19,9 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 public class CoconutCrabEntity extends CreatureEntity {
 
 
-
-    public CoconutCrabEntity(FMLPlayMessages.SpawnEntity spawnEntity, World world) {
-        super((EntityType<? extends CreatureEntity>) EntityTypeRegistration.COCONUT_CRAB,world);
-
-
+    public CoconutCrabEntity(EntityType<? extends CreatureEntity> type, World worldIn) {
+        super(type, worldIn);
     }
-
-    public CoconutCrabEntity(EntityType<Entity> entityEntityType, World world) {
-        super((EntityType<? extends CreatureEntity>) EntityTypeRegistration.COCONUT_CRAB,world);
-}
 
     @Override
     public CreatureAttribute getCreatureAttribute() {
@@ -39,10 +33,10 @@ public class CoconutCrabEntity extends CreatureEntity {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(3, new NocturnalGoal(this, 1));
-        this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 2.5D, false));
         this.targetSelector.addGoal(2, new WeakenedMobHunterGoal<>(this, LivingEntity.class, false,5));
-
+        this.goalSelector.addGoal(4, new CrackCoconutGoal(this));
 
     }
     @Override

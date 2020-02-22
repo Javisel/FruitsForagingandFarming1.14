@@ -7,6 +7,7 @@ import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.world.Difficulty;
 
 public class WeakenedMobHunterGoal<T extends LivingEntity>  extends NearestAttackableTargetGoal {
 
@@ -19,9 +20,13 @@ public class WeakenedMobHunterGoal<T extends LivingEntity>  extends NearestAttac
         this.targetEntitySelector = new HealthPredicate(healthThreshold);
     }
 
-
-
-
+    /**
+     * Returns whether the EntityAIBase should begin execution.
+     */
+    @Override
+    public boolean shouldExecute() {
+        return super.shouldExecute() && this.goalOwner.getEntityWorld().getDifficulty() != Difficulty.PEACEFUL;
+    }
 
     protected void findNearestTarget() {
         if (this.targetClass != PlayerEntity.class && this.targetClass != ServerPlayerEntity.class) {

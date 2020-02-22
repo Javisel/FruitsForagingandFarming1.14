@@ -1,6 +1,6 @@
 package com.teamcitrus.fruitsforagingandfarming.client;
 
-import com.teamcitrus.fruitsforagingandfarming.client.render.entity.CoconutCrabRenderer;
+import com.teamcitrus.fruitsforagingandfarming.client.render.entity.coconutcrab.CoconutCrabRenderer;
 import com.teamcitrus.fruitsforagingandfarming.client.render.entity.FFFFBoatRenderer;
 import com.teamcitrus.fruitsforagingandfarming.common.entity.CoconutCrabEntity;
 import com.teamcitrus.fruitsforagingandfarming.common.entity.FFFBoat;

@@ -26,8 +26,8 @@ public class EntityTypeRegistration {
     @SubscribeEvent
     public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
 
-        FFF_BOAT = EntityType.Builder.<BoatEntity>create(FFFBoat::new, EntityClassification.MONSTER).setCustomClientFactory(FFFBoat::new).size(1.375F, 0.5625F).build(FruitsForagingAndFarming.MODID + ":fff_boat");
-        COCONUT_CRAB = EntityType.Builder.create(CoconutCrabEntity::new, EntityClassification.CREATURE).size(0.8f,0.4375f).build(FruitsForagingAndFarming.MODID + ":coconut_crab").setRegistryName(FruitsForagingAndFarming.MODID,"coconut_crab");
+        FFF_BOAT = EntityType.Builder.<BoatEntity>create(FFFBoat::new, EntityClassification.MISC).setCustomClientFactory(FFFBoat::new).size(1.375F, 0.5625F).build(FruitsForagingAndFarming.MODID + ":fff_boat");
+        COCONUT_CRAB = EntityType.Builder.create(CoconutCrabEntity::new, EntityClassification.MONSTER).size(0.8f,0.4375f).build(FruitsForagingAndFarming.MODID + ":coconut_crab").setRegistryName(FruitsForagingAndFarming.MODID,"coconut_crab");
 
         EntityTypeRegistration.FFF_BOAT.setRegistryName(FruitsForagingAndFarming.MODID, "fff_boat");
 
