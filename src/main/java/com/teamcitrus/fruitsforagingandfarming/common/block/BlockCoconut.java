@@ -95,7 +95,7 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
         return state;
     }
 
-    public int getState(BlockState state) {
+    public int getMetaFromState(BlockState state) {
         return state.get(BlockCoconut.state);
     }
 
@@ -124,13 +124,13 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
     @Override
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
 
-        return !isClient && getState(state) < 2;
+        return !isClient && getMetaFromState(state) < 2;
 
     }
 
     @Override
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
-        return getState(state) < 2;
+        return getMetaFromState(state) < 2;
 
     }
 
@@ -146,7 +146,7 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
     public void grow(World worldIn, Random rand, BlockPos pos, BlockState state) {
         if (!worldIn.isRemote) {
             int i = rand.nextInt(2);
-            i += getState(state);
+            i += getMetaFromState(state);
             int j = 2;
 
             if (i > j) {
@@ -166,14 +166,14 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
         if (!worldIn.isAreaLoaded(pos, 1) || worldIn.isRemote) {
             return;
         }
-        int i = this.getState(state);
+        int i = this.getMetaFromState(state);
         if (canGrow(worldIn, pos, state, false)) {
             float f = getGrowthChance(worldIn, pos);
 
             if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
                 worldIn.setBlockState(pos, this.getStateWithMeta(i + 1), 2);
                 net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
-                i = getState(worldIn.getBlockState(pos));
+                i = getMetaFromState(worldIn.getBlockState(pos));
             }
 
 
@@ -213,7 +213,7 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
         if (canFallThrough(worldIn.getBlockState(pos.down())) && !worldIn.getBlockState(pos.up()).isIn(BlockTags.LEAVES) && pos.getY() >= 0) {
             if (!worldIn.isRemote) {
                 System.out.println(worldIn.getBlockState(pos.up()).getBlock().getTags().contains(BlockTags.LEAVES));
-                if (this.getState(worldIn.getBlockState(pos)) < 2) {
+                if (this.getMetaFromState(worldIn.getBlockState(pos)) < 2) {
                     worldIn.removeBlock(pos, false);
                 } else {
                     FallingBlockEntity fallingblockentity = new FallingBlockEntity(worldIn, (double) pos.getX() + 0.5D, pos.getY(), (double) pos.getZ() + 0.5D, this.getStateWithMeta(4));
@@ -238,7 +238,7 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
             if (rand.nextInt(16) == 0) {
                 BlockPos blockpos = pos.down();
 
-                if (canFallThrough(worldIn.getBlockState(blockpos)) && getState(stateIn) == 2) {
+                if (canFallThrough(worldIn.getBlockState(blockpos)) && getMetaFromState(stateIn) == 2) {
                     double d0 = (float) pos.getX() + rand.nextFloat();
                     double d1 = (double) pos.getY() - 0.05D;
                     double d2 = (float) pos.getZ() + rand.nextFloat();
@@ -252,7 +252,7 @@ public class BlockCoconut extends FallingBlock implements IGrowable {
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return COCONUT_SHAPE[getState(state)];
+        return COCONUT_SHAPE[getMetaFromState(state)];
     }
 
 

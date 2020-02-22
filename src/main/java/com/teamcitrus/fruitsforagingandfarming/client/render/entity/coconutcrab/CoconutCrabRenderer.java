@@ -16,7 +16,7 @@ public class CoconutCrabRenderer extends MobRenderer< CoconutCrabEntity,  Coconu
     private static final ResourceLocation COCONUT_CRAB_TEXTURES = new ResourceLocation(FruitsForagingAndFarming.MODID + ":" + "textures/entity/coconut_crab.png");
 
     public CoconutCrabRenderer(EntityRendererManager rendererManager) {
-        super(rendererManager, new CoconutCrabModel<>(), 1);
+        super(rendererManager, new CoconutCrabModel<>(), .5f);
         new CrabHeldItemLayer(this);
     }
 
